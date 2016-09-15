@@ -2,13 +2,10 @@ package math;
 
 import java.lang.Math;
 
-//this class is named BoundingBox instead of Box
-//because it is a collider that's shaped like a box
-//which can contain any number of shapes
-//which are *bound* inside the bounding box
 public class BoundingBox 
 {
     protected Vector2 min, max;
+    protected Vector2 position;
     
     /*
     
@@ -28,12 +25,21 @@ public class BoundingBox
     {
         this.min = new Vector2(0f, 0f);
         this.max = new Vector2(1f, 1f); //1 right, 1 up
+        this.position = new Vector2(0f, 0f);
     }
     
     public BoundingBox(Vector2 min, Vector2 max)
     {
         this.min = min;
         this.max = max;
+        this.position = new Vector2(0f, 0f);
+    }
+    
+    public BoundingBox(Vector2 min, Vector2 max, Vector2 position)
+    {
+        this.min = min;
+        this.max = max;
+        this.position = position;
     }
     
     public boolean CollidingWithBox(BoundingBox other)
@@ -71,7 +77,6 @@ public class BoundingBox
     public float Distance(Vector2 point)
     {
         Vector2 middle = new Vector2((min.x - max.x)/2, (min.y - max.y)/2);
-        
         return (float) 
         Math.sqrt(Math.pow(middle.x - point.x, 2) + Math.pow(middle.y - point.y, 2));
     }
