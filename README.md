@@ -1,6 +1,6 @@
 # Lines
 
-**Aihe:** Hiirellä pelattava nopeatempoinen puzzlepeli. Toteutetaan [LWJGL](https://www.lwjgl.org/) kirjaston avulla.
+**Aihe:** Simppeli 2D fysiikkamoottori tehtynä ilman kolmannen osapuolen kirjastoja. Vielä yksinkertaisempi peli rakennettuna tämän päälle.
 
 **Käyttäjät:** Kuka tahansa
 
@@ -14,3 +14,5 @@ Päivä | Tunnit | Kuvaus
 ------- | ------- | -------
 07.09.2016 | 1.5h | Pelin suunnittelua
 09.09.2016 | 1h | Projektin ja repon luonti
+14.09.2016 | 1.5h | Maven+LWJGL säätöä. Luovutus LWJGL suhteen.
+14.09.2016 | 3h | Pelifyssan opiskelua ja moottorin peruselementtien rakentelua.
