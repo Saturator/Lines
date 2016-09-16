@@ -36,14 +36,17 @@ public class Vector2
         return (this.x * other.x) + (this.y * other.y);
     }
     
-    public void normalize()
+    public Vector2 normalize()
     {
         float length = this.length();
         
         if(length > 0f)
         {
-            this.x /= length; 
-            this.y /= length;
+            return new Vector2(this.x /= length, this.y /= length);
+        }
+        else
+        {
+            return this;
         }
     }
     

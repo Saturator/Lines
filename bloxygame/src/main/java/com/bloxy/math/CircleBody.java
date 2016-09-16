@@ -22,14 +22,18 @@ public class CircleBody extends PhysicsBody
         this.position = position;
     }
     
-    public boolean isCollidingWithCircle(CircleBody other)
+    public CircleBody(Vector2 position)
     {
-        return 
-        (((this.position.x + this.radius) > (other.position.x - other.radius)) ||
-        ((this.position.x - this.radius) < (other.position.x + other.radius)))
-        &&
-        (((this.position.y + this.radius) > (other.position.y - other.radius)) ||
-        ((this.position.y - this.radius) < (other.position.y + other.radius)));
+        this.radius = 1f;
+        this.position = position;
+    }
+    
+    public boolean isCollidingWithAnotherCircle(CircleBody other)
+    {
+        float betweenLength = 
+        new Vector2(other.position.x - this.position.x, other.position.y - this.position.y).length();
+        
+        return (betweenLength - (this.radius + other.radius)) <= 0f;
     }
     
     //think if this should return a vector or just add to the overclass right away

@@ -74,6 +74,6 @@ public class BoxBody extends PhysicsBody
     public float distance(Vector2 point)
     {
         Vector2 middle = new Vector2((min.x - max.x)/2, (min.y - max.y)/2);
-        return Generic.length(new Vector2(middle.x - point.x, middle.y - point.y));
+        return new Vector2(middle.x - point.x, middle.y - point.y).length();
     }
 }

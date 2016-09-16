@@ -29,7 +29,7 @@ public class PhysicsBody
     public float speed()
     {
         //just the length of the velocity vector
-        return Generic.length(velocity);
+        return velocity.length();
     }
     
     public void decreaseSpeed()

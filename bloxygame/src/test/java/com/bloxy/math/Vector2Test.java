@@ -5,94 +5,65 @@ import static org.junit.Assert.*;
 
 public class Vector2Test 
 {
-    
-    public Vector2Test() 
+    @Test
+    public void additionTest1()
     {
+        Vector2 v1 = new Vector2(10f, 10f);
+        Vector2 v2 = new Vector2(1f, 1f);
+        Vector2 result = v1.add(v2);
+        Vector2 expectedResult = new Vector2(11f, 11f);
+        assertEquals(result.x, expectedResult.x, 0.01f);
+        assertEquals(result.y, expectedResult.y, 0.01f);
     }
-
+    
     @Test
-    public void testAdd1() 
+    public void additionTest2()
     {
-        Vector2 other = new Vector2(5f, 5f);
-        Vector2 instance = new Vector2(10f, 5f);
-        
-        Vector2 expectedResult = new Vector2(15f, 10f);
-        System.out.println(instance.add(other));
-        System.out.println(expectedResult);
-        Vector2 result = instance.add(other);
-        System.out.println(expectedResult.x + " " + result.x);
-        assertEquals(expectedResult.x, result.x, 0.01f);
-        assertEquals(expectedResult.y, result.y, 0.01f);
-        fail("Vector addition not working properly.");
+        Vector2 v1 = new Vector2(5.5f, 5.5f);
+        Vector2 v2 = new Vector2(4.5f, 4.5f);
+        Vector2 result = v1.add(v2);
+        Vector2 expectedResult = new Vector2(10f, 10f);
+        assertEquals(result.x, expectedResult.x, 0.01f);
+        assertEquals(result.y, expectedResult.y, 0.01f);
     }
     
-    /*
     @Test
-    public void testAdd2() 
+    public void additionTest3()
     {
-        Vector2 other = new Vector2(10.42f, 2.22f);
-        Vector2 instance = new Vector2(10f, 5f);
-        Vector2 expectedResult = new Vector2(20.42f, 7.22f);
-        Vector2 result = instance.add(other);
-        assertEquals(expectedResult, result);
-        fail("Vector addition not working properly.");
+        Vector2 v1 = new Vector2(0.111f, 0.111f);
+        Vector2 v2 = new Vector2(0.333f, 0.333f);
+        Vector2 result = v1.add(v2);
+        Vector2 expectedResult = new Vector2(0.444f, 0.444f);
+        assertEquals(result.x, expectedResult.x, 0.001f);
+        assertEquals(result.y, expectedResult.y, 0.001f);
     }
     
-    
     @Test
-    public void testAdd3 () 
+    public void multiplicationTest1()
     {
-        Vector2 other = new Vector2(5.5f, 100.5f);
-        Vector2 instance = new Vector2(5.5f, 100.5f);
-        Vector2 expectedResult = new Vector2(11f, 101f);
-        Vector2 result = instance.add(other);
-        assertEquals(expectedResult, result);
-        fail("Vector addition not working properly.");
+        Vector2 v1 = new Vector2(1f, 2f);
+        Vector2 result = v1.multiply(-1f);
+        Vector2 expectedResult = new Vector2(-1f, -2f);
+        assertEquals(result.x, expectedResult.x, 0.001f);
+        assertEquals(result.y, expectedResult.y, 0.001f);
     }
-
-    @Test
-    public void testMultiply() {
-        System.out.println("multiply");
-        float multiplier = 0.0F;
-        Vector2 instance = new Vector2();
-        Vector2 expResult = null;
-        Vector2 result = instance.multiply(multiplier);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    @Test
-    public void testLength() {
-        System.out.println("length");
-        Vector2 instance = new Vector2();
-        float expResult = 0.0F;
-        float result = instance.length();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    @Test
-    public void testDotProduct() {
-        System.out.println("dotProduct");
-        Vector2 other = null;
-        Vector2 instance = new Vector2();
-        float expResult = 0.0F;
-        float result = instance.dotProduct(other);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    @Test
-    public void testNormalize() {
-        System.out.println("normalize");
-        Vector2 instance = new Vector2();
-        instance.normalize();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    */
     
+    @Test
+    public void normalizeTest1()
+    {
+        Vector2 v = new Vector2(12842f, 0f);
+        Vector2 result = v.normalize();
+        Vector2 expectedResult = new Vector2(1f, 0f);
+        assertEquals(result.x, expectedResult.x, 0.01f);
+    }
+    
+    @Test
+    public void normalizeTest2()
+    {
+        Vector2 v = new Vector2(0f, 534785f);
+        Vector2 result = v.normalize();
+        System.out.println(result);
+        Vector2 expectedResult = new Vector2(0f, 1f);
+        assertEquals(result.y, expectedResult.y, 0.01f);
+    }
 }
