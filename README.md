@@ -17,4 +17,4 @@ Päivä | Tunnit | Kuvaus
 14.09.2016 | 1.5h | Maven+LWJGL säätöä. Luovutus LWJGL suhteen.
 14.09.2016 | 3h | Pelifyssan opiskelua ja moottorin peruselementtien rakentelua.
 
-![Luokkakaavio](http://i.imgur.com/xhvVPit.png)
+![Luokkakaavio](http://i.imgur.com/xhvVPit.png "Alustava luokkakaavio")
