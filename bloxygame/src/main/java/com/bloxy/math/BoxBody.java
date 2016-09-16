@@ -1,8 +1,6 @@
-package math;
+package com.bloxy.math;
 
-import java.lang.Math;
-
-public class BoundingBox 
+public class BoxBody extends PhysicsBody
 {
     protected Vector2 min, max;
     protected Vector2 position;
@@ -21,28 +19,28 @@ public class BoundingBox
     */
     
     //create a box that is 1x1 by default
-    public BoundingBox()
+    public BoxBody()
     {
         this.min = new Vector2(0f, 0f);
         this.max = new Vector2(1f, 1f); //1 right, 1 up
         this.position = new Vector2(0f, 0f);
     }
     
-    public BoundingBox(Vector2 min, Vector2 max)
+    public BoxBody(Vector2 min, Vector2 max)
     {
         this.min = min;
         this.max = max;
         this.position = new Vector2(0f, 0f);
     }
     
-    public BoundingBox(Vector2 min, Vector2 max, Vector2 position)
+    public BoxBody(Vector2 min, Vector2 max, Vector2 position)
     {
         this.min = min;
         this.max = max;
         this.position = position;
     }
     
-    public boolean CollidingWithBox(BoundingBox other)
+    public boolean isCollidingWithBox(BoxBody other)
     {
         /*
         
@@ -74,10 +72,9 @@ public class BoundingBox
         (this.max.y > other.min.y || this.min.y < other.max.y);
     }
     
-    public float Distance(Vector2 point)
+    public float distance(Vector2 point)
     {
         Vector2 middle = new Vector2((min.x - max.x)/2, (min.y - max.y)/2);
-        return (float) 
-        Math.sqrt(Math.pow(middle.x - point.x, 2) + Math.pow(middle.y - point.y, 2));
+        return Generic.length(new Vector2(middle.x - point.x, middle.y - point.y));
     }
 }
