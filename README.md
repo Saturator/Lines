@@ -14,9 +14,9 @@ Päivä | Tunnit | Kuvaus
 ------- | ------- | -------
 07.09.2016 | 1.5h | Pelin suunnittelua
 09.09.2016 | 1h | Projektin ja repon luonti
-14.09.2016 | 1.5h | Maven+LWJGL säätöä. Luovutus LWJGL suhteen.
-14.09.2016 | 3h | Pelifyssan opiskelua ja moottorin peruselementtien rakentelua.
-15.09.2016 | 5h | Moottorin rakentelua, checkstyle, pit, testit ja luokkakaavio
+15.09.2016 | 1.5h | Maven+LWJGL säätöä. Luovutus LWJGL suhteen.
+15.09.2016 | 3h | Pelifyssan opiskelua ja moottorin peruselementtien rakentelua.
+16.09.2016 | 5h | Moottorin rakentelua, checkstyle, pit, testit ja luokkakaavio
 
 **Alustava luokkakaavio:**<br/>
 ![Luokkakaavio](http://i.imgur.com/xhvVPit.png "Alustava luokkakaavio")
