@@ -1,6 +1,3 @@
-/blocksgame/target/
-/blockgame/target/
-/game/target/
-/bloxygame/target/
-/bloxygame/nbproject/
+
 .DS_Store
+.gitignore
