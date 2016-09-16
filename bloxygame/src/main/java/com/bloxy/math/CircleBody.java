@@ -3,7 +3,6 @@ package com.bloxy.math;
 public class CircleBody extends PhysicsBody
 {
     protected float radius;
-    protected Vector2 position;
     
     public CircleBody()
     {

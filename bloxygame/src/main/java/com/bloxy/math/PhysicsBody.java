@@ -3,6 +3,7 @@ package com.bloxy.math;
 public class PhysicsBody 
 {
     protected Vector2 velocity;
+    protected Vector2 position;
     protected float mass;
     protected float friction;
     

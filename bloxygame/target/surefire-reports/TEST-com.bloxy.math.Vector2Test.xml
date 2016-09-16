@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="1" name="com.bloxy.math.Vector2Test" time="0.053" errors="0" skipped="0">
+<testsuite tests="1" failures="1" name="com.bloxy.math.Vector2Test" time="0.058" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/jre/lib"/>
@@ -64,10 +64,10 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.bloxy.math.Vector2Test" name="testAdd1" time="0.008">
+  <testcase classname="com.bloxy.math.Vector2Test" name="testAdd1" time="0.007">
     <failure message="Vector addition not working properly." type="java.lang.AssertionError">java.lang.AssertionError: Vector addition not working properly.
 	at org.junit.Assert.fail(Assert.java:88)
-	at com.bloxy.math.Vector2Test.testAdd1(Vector2Test.java:27)
+	at com.bloxy.math.Vector2Test.testAdd1(Vector2Test.java:28)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -101,7 +101,6 @@
     <system-out>x: 15.0 | y: 10.0
 x: 15.0 | y: 10.0
 15.0 15.0
-10.0 10.0
 </system-out>
   </testcase>
 </testsuite>

@@ -3,7 +3,6 @@ package com.bloxy.math;
 public class BoxBody extends PhysicsBody
 {
     protected Vector2 min, max;
-    protected Vector2 position;
     
     /*
     
