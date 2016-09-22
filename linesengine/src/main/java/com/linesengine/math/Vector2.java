@@ -50,6 +50,30 @@ public class Vector2
         }
     }
     
+    public void rotate(float angle)
+    {
+        double rotatedX =
+        this.x * Math.cos(Math.toRadians(angle)) - this.y * Math.sin(Math.toRadians(angle));
+        
+        double rotatedY = 
+        this.x * Math.sin(Math.toRadians(angle)) + this.y * Math.cos(Math.toRadians(angle));
+        
+        this.x = (float) rotatedX;
+        this.y = (float) rotatedY;
+    }
+    
+    public void rotate(float angle, Vector2 center)
+    {
+        double rotatedX =
+        this.x * Math.cos(Math.toRadians(angle)) - this.y * Math.sin(Math.toRadians(angle));
+        
+        double rotatedY = 
+        this.x * Math.sin(Math.toRadians(angle)) + this.y * Math.cos(Math.toRadians(angle));
+        
+        this.x = (float) rotatedX;
+        this.y = (float) rotatedY;
+    }
+    
     @Override
     public String toString()
     {

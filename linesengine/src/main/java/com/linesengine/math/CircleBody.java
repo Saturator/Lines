@@ -28,7 +28,26 @@ public class CircleBody extends PhysicsBody
         this.position = position;
     }
     
-    public boolean isCollidingWithAnotherCircle(CircleBody other)
+    @Override
+    public void move(Vector2 movement)
+    {
+        this.position.add(movement);
+    }  
+    
+    @Override
+    public void testForCollision(Collidable other)
+    {
+        if(isCollidingWithCircle((CircleBody) other))
+        {
+            resolveCircleCollision((CircleBody) other);
+        }
+        else if(other instanceof BoxBody)
+        {
+            //isCollidingWithBox((BoxBody) other);
+        }
+    }
+    
+    public boolean isCollidingWithCircle(CircleBody other)
     {
         float betweenLength = 
         new Vector2(other.position.x - this.position.x, other.position.y - this.position.y).length();
@@ -37,7 +56,7 @@ public class CircleBody extends PhysicsBody
     }
     
     //think if this should return a vector or just add to the overclass right away
-    public void resolveCollision(CircleBody other)
+    public void resolveCircleCollision(CircleBody other)
     {
         Vector2 directionalVector = 
         new Vector2(other.position.x - position.x, other.position.y - position.y);
@@ -47,4 +66,9 @@ public class CircleBody extends PhysicsBody
         this.velocity.add(directionalVector);
     }
     
+    @Override
+    public void resolveCollision(Collidable other)
+    {
+        
+    }
 }

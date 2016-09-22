@@ -1,9 +1,13 @@
 package com.linesengine.math;
 
-public class PhysicsBody 
+public abstract class PhysicsBody implements Collidable
 {
     protected Vector2 velocity;
     protected Vector2 position;
+    
+    protected float width;
+    protected float height;
+    
     protected float mass;
     protected float friction;
     //you can add gravity by adding small a down vector 
@@ -13,6 +17,7 @@ public class PhysicsBody
     {
         //no movement in the beginning
         velocity = new Vector2(0f, 0f);
+        this.friction = 0.1f;
     }
     
     public PhysicsBody(float friction)
@@ -28,19 +33,36 @@ public class PhysicsBody
         }
     }
     
+    @Override
+    public abstract void testForCollision(Collidable other);
+    
     public float speed()
     {
         //just the length of the velocity vector
         return velocity.length();
     }
     
+    public Vector2 getVelocity()
+    {
+        return this.velocity;
+    }
+    
+    public abstract void move(Vector2 movement);
+    
     public void decreaseSpeed()
     {
         //we multiply the velocity vector by friction each time step
-        //if is friction 0.01, we then get 0.99, so we multiply velocity by 0.99f
+        //if friction is 0.01, we then get 0.99, so we multiply velocity by 0.99f
         if(this.velocity.length() > 0f)
         {
             this.velocity.multiply((1f - friction));
+            
+            //stop the object if velocity is really really slow?
+            //instead of just multiplying to infinity
+            if(this.velocity.length() < 0.001f)
+            {
+                this.velocity = new Vector2(0f, 0f);
+            }
         }
     }
 }

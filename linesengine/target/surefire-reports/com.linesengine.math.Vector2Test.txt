@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: com.bloxy.math.Vector2Test
+Test set: com.linesengine.math.Vector2Test
 -------------------------------------------------------------------------------
 Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec

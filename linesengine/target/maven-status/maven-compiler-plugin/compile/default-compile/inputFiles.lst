@@ -1,7 +1,7 @@
-/Users/ematias/lines/bloxygame/src/main/java/com/bloxy/engine/GameObject.java
-/Users/ematias/lines/bloxygame/src/main/java/com/bloxy/math/BoxBody.java
-/Users/ematias/lines/bloxygame/src/main/java/com/bloxy/bloxygame/Main.java
-/Users/ematias/lines/bloxygame/src/main/java/com/bloxy/math/PhysicsBody.java
-/Users/ematias/lines/bloxygame/src/main/java/com/bloxy/engine/GameScene.java
-/Users/ematias/lines/bloxygame/src/main/java/com/bloxy/math/Vector2.java
-/Users/ematias/lines/bloxygame/src/main/java/com/bloxy/math/CircleBody.java
+/Users/ematias/lines/linesengine/src/main/java/com/linesengine/engine/GameObject.java
+/Users/ematias/lines/linesengine/src/main/java/com/linesengine/game/Main.java
+/Users/ematias/lines/linesengine/src/main/java/com/linesengine/math/PhysicsBody.java
+/Users/ematias/lines/linesengine/src/main/java/com/linesengine/math/BoxBody.java
+/Users/ematias/lines/linesengine/src/main/java/com/linesengine/math/CircleBody.java
+/Users/ematias/lines/linesengine/src/main/java/com/linesengine/engine/GameScene.java
+/Users/ematias/lines/linesengine/src/main/java/com/linesengine/math/Vector2.java
