@@ -19,6 +19,11 @@ public class GameObject
         this.physicsBody = body;
     }
     
+    public void addPhysicsBody(PhysicsBody body)
+    {
+        this.physicsBody = body;
+    }
+    
     public void render(Graphics g)
     {
         

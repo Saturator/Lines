@@ -10,6 +10,7 @@ public class GameWindow extends Canvas
     public static final int WIDTH = 600;
     public static final int HEIGHT = WIDTH / 12 * 9;
     
+    //TODO: add some mutator methods
     public GameWindow(String title, GameProject project)
     {
         this.title = title;

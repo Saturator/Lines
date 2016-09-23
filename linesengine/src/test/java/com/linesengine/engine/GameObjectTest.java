@@ -22,4 +22,14 @@ public class GameObjectTest
         assertEquals(go1.physicsBody.getPosition().x, 1f, 0.01f);
         assertEquals(go1.physicsBody.getPosition().y, 2f, 0.01f);
     }
+    
+    @Test
+    public void addPhysicsBodyTest()
+    {
+        PhysicsBody c = new CircleBody(new Vector2(1f, 2f));
+        GameObject go1 = new GameObject("test");
+        go1.addPhysicsBody(c);
+        c.setVelocity(new Vector2(2f, 0f));
+        assertEquals(go1.physicsBody.getVelocity().x, 2f, 0.01f);
+    }
 }
