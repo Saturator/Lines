@@ -19,24 +19,33 @@ public class BoxBody extends PhysicsBody
     */
     
     //create a box that is 1x1 by default
-    public BoxBody()
+    public BoxBody(Vector2 tl, Vector2 tr, Vector2 br, Vector2 bl)
     {
-        this.scaleBox(1f);
-        this.position = new Vector2(0f, 0f);
+        this.tl = tl;
+        this.tr = tr;
+        this.br = br;
+        this.bl = bl;
+        this.position = this.middle();
         rotation = 0f;
     }
     
     public BoxBody(float size)
     {
-        this.scaleBox(size);
+        this.tl = new Vector2(-0.5f * size, 0.5f * size);
+        this.tr = new Vector2(0.5f * size, 0.5f * size);
+        this.br = new Vector2(0.5f * size, -0.5f * size);
+        this.bl = new Vector2(-0.5f * size, -0.5f * size);
         this.position = new Vector2(0f, 0f);
         rotation = 0f;
     }
     
     public BoxBody(float size, Vector2 position)
     {
-        this.scaleBox(size);
-        this.move(position);
+        this.tl = new Vector2(-0.5f * size, 0.5f * size);
+        this.tr = new Vector2(0.5f * size, 0.5f * size);
+        this.br = new Vector2(0.5f * size, -0.5f * size);
+        this.bl = new Vector2(-0.5f * size, -0.5f * size);
+        this.position = position;
         rotation = 0f;
     }
     
@@ -48,6 +57,7 @@ public class BoxBody extends PhysicsBody
         this.bl.add(new Vector2(-0.5f * size, -0.5f * size));
     }
     
+    @Override
     public void move(Vector2 movement)
     {
         this.tl = new Vector2(this.tl.x + movement.x, this.tl.y + movement.y);
@@ -61,13 +71,14 @@ public class BoxBody extends PhysicsBody
     @Override
     public void testForCollision(Collidable other)
     {
-
-    }
-    
-    @Override
-    public void resolveCollision(Collidable other)
-    {
-        
+        if(other instanceof CircleBody)
+        {
+            
+        }
+        else if(other instanceof BoxBody && isCollidingWithBox((BoxBody) other))
+        {
+            
+        }
     }
     
     public boolean isCollidingWithBox(BoxBody other)
@@ -103,18 +114,43 @@ public class BoxBody extends PhysicsBody
     
     public float distance(Vector2 point)
     {
-        Vector2 middle = new Vector2((bl.x - tr.x)/2, (bl.y - tr.y)/2);
+        Vector2 middle = this.middle();
         return new Vector2(middle.x - point.x, middle.y - point.y).length();
+    }
+    
+    public Vector2 middle()
+    {
+        return new Vector2((tr.x + tl.x) / 2, (tr.y + br.y) / 2);
+    }
+    
+    public Line[] getCollisionNormals()
+    {
+        Line[] normals = new Line[4]; //array of lines, aka 2 points
+        
+        normals[0] = new Line(this.tl, this.tr);
+        normals[1] = new Line(this.tr, this.br);
+        normals[2] = new Line(this.br, this.bl);
+        normals[3] = new Line(this.bl, this.tl);
+        
+        for(Line l : normals)
+        {
+            l.rotate(90);
+        }
+        
+        return normals;
     }
     
     public void rotate(float angle)
     {           
+        //these call the vector2 rotation func, not this one
         this.tl.rotate(angle);
         this.tr.rotate(angle);
         this.br.rotate(angle);
         this.bl.rotate(angle);
         
-        //change the places of top left dots, etc as the box spins
+        //changes the places of top left dots, etc as the box spins
+        //because as the box spins, the top left and all others also change
+        //we change them as many times as the box has been rotated a full 90 degrees
         for(float i = this.rotation; i <= angle+this.rotation; i += 90)
         {
             Vector2 oldTl = this.tl;
@@ -133,5 +169,12 @@ public class BoxBody extends PhysicsBody
         {
             this.rotation = angle - 360f;
         }
+    }
+    
+    @Override
+    public String toString()
+    {
+        return "tl: " + this.tl + ", tr: " + this.tr + ", br: " + this.br + ", bl: " + this.bl +
+               ", mid: " + this.middle();
     }
 }

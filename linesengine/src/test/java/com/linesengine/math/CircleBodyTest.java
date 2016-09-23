@@ -44,4 +44,29 @@ public class CircleBodyTest
         boolean result = c1.isCollidingWithCircle(c2);
         assertEquals(false, result);
     }
+    
+    @Test
+    public void resolveCircleCollisionTest1()
+    {
+        CircleBody c1 = new CircleBody(new Vector2(1f, 1f));
+        CircleBody c2 = new CircleBody();
+        c1.velocity = new Vector2(-10f, 0f);
+        c1.resolveCircleCollision(c2);
+        Vector2 expectedResult = new Vector2(-4.69f, 5.3f);
+        assertEquals(c1.getVelocity().x, expectedResult.x, 0.01f);
+        assertEquals(c1.getVelocity().y, expectedResult.y, 0.01f);
+    }
+    
+    @Test
+    public void resolveCircleCollisionTest2()
+    {
+        CircleBody c1 = new CircleBody(new Vector2(-1f, -1f));
+        CircleBody c2 = new CircleBody();
+        c1.velocity = new Vector2(5f, 0f);
+        c1.resolveCircleCollision(c2);
+        Vector2 expectedResult = new Vector2(2.34f, -2.65f);
+        System.out.println(c1.getVelocity());
+        assertEquals(c1.getVelocity().x, expectedResult.x, 0.01f);
+        assertEquals(c1.getVelocity().y, expectedResult.y, 0.01f);
+    }
 }

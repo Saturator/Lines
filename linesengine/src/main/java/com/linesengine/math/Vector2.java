@@ -1,8 +1,10 @@
 package com.linesengine.math;
 
+import java.text.Format.*;
+
 public class Vector2 
 {
-    protected float x, y;
+    public float x, y;
     
     public Vector2()
     {
@@ -16,14 +18,22 @@ public class Vector2
         this.y = y;
     }
     
-    public Vector2 add(Vector2 other)
+    public Vector2(Vector2 v)
     {
-        return new Vector2(this.x + other.x, this.y + other.y);
+        v.x = x;
+        v.y = y;
     }
     
-    public Vector2 multiply(float multiplier)
+    public void add(Vector2 other)
     {
-        return new Vector2(this.x * multiplier, this.y * multiplier);
+         this.x += other.x;
+         this.y += other.y;
+    }
+    
+    public void multiply(float multiplier)
+    {
+        this.x *= multiplier; 
+        this.y *= multiplier;
     }
     
     public float length()
@@ -52,6 +62,8 @@ public class Vector2
     
     public void rotate(float angle)
     {
+        //rotation matrix is used here
+        //maybe a matrix math class separately? is it needed?
         double rotatedX =
         this.x * Math.cos(Math.toRadians(angle)) - this.y * Math.sin(Math.toRadians(angle));
         
@@ -77,6 +89,8 @@ public class Vector2
     @Override
     public String toString()
     {
-        return "x: " + this.x + " | y: " + this.y;
+        float roundedX = Math.round(this.x * 1000.0f) / 1000.0f;
+        float roundedY = Math.round(this.y * 1000.0f) / 1000.0f;
+        return "x: " + roundedX + " | y: " + roundedY;
     }
 }

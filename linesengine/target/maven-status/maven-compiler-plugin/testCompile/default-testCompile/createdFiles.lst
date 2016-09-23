@@ -1,2 +1,7 @@
+com/linesengine/math/LineTest.class
+com/linesengine/math/PhysicsBodyTest.class
 com/linesengine/math/CircleBodyTest.class
+com/linesengine/engine/GameObjectTest.class
 com/linesengine/math/Vector2Test.class
+com/linesengine/engine/GameSceneTest.class
+com/linesengine/math/BoxBodyTest.class

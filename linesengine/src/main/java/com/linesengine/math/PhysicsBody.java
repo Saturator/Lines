@@ -27,6 +27,11 @@ public abstract class PhysicsBody implements Collidable
         {
             this.friction = 1f;
         }
+        //or smaller than 0%
+        else if(friction < 0f)
+        {
+            this.friction = 0f;
+        }
         else
         {
             this.friction = friction;
@@ -45,6 +50,26 @@ public abstract class PhysicsBody implements Collidable
     public Vector2 getVelocity()
     {
         return this.velocity;
+    }
+    
+    public void setVelocity(Vector2 v)
+    {
+        this.velocity = v;
+    }
+    
+    public void addToVelocity(Vector2 v)
+    {
+        this.velocity.add(v);
+    }
+    
+    public Vector2 getPosition()
+    {
+        return this.position;
+    }
+    
+    public void setPosition(Vector2 v)
+    {
+        this.position = v;
     }
     
     public abstract void move(Vector2 movement);

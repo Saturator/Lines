@@ -2,6 +2,7 @@ package com.linesengine.engine;
 
 import java.util.ArrayList;
 import com.linesengine.math.*;
+import java.awt.Graphics;
 
 public class GameScene
 {
@@ -19,6 +20,16 @@ public class GameScene
     {
         return this.sceneObjects;
     }
+    
+    public void addGameObject(GameObject go)
+    {
+        this.sceneObjects.add(go);
+    }
+    
+    public void removeGameObject(GameObject go)
+    {
+        this.sceneObjects.remove(go);
+    }
 
     //right now you CANT find two objects if they have the same name,
     //so you better make a thing for that
@@ -34,29 +45,46 @@ public class GameScene
         }
         return findable;
     }
+    
+    public void updateScene()
+    {
+        this.testForAllCollisions();
+        this.moveAllObjects();
+    }
+    
+    //put the iterations in only one place after getting this to work
+    public void render(Graphics g)
+    {
+        for(int i = 0; i < sceneObjects.size(); i++)
+        {
+            sceneObjects.get(i).render(g);
+        }
+    }
 
     public void moveAllObjects()
     {
-        for(int i = 0; i < sceneObjects.size() - 1; i++)
+        for(int i = 0; i < sceneObjects.size(); i++)
         {
             PhysicsBody body = sceneObjects.get(i).physicsBody;
             if(body != null)
             {
                 body.move(body.getVelocity());
+                body.decreaseSpeed();
             }
         }
     }
     
     public void testForAllCollisions()
     {
-        //this is supersuper slow right now..
-        //make the algorithm so that the inner loops only check items which
-        //are within the max widths/heights for collision at all
-        for (int i = 0; i < sceneObjects.size() - 1; i++)
+        //this is supersuper slow right now!!
+        //make the algorithm so that the inner loops only checks items which
+        //are within the max width/height for collision at all
+        //otherwise jump out of the nested loop right away
+        for (int i = 0; i < sceneObjects.size(); i++)
         {
-            if (i != sceneObjects.size() - 1)
+            if (i != sceneObjects.size())
             {
-                for (int j = i + 1; j < sceneObjects.size() - 1; j++)
+                for (int j = i + 1; j < sceneObjects.size(); j++)
                 {
                     testForSpecificCollision(i, j);
                 }

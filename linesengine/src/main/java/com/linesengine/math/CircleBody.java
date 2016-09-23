@@ -37,7 +37,7 @@ public class CircleBody extends PhysicsBody
     @Override
     public void testForCollision(Collidable other)
     {
-        if(isCollidingWithCircle((CircleBody) other))
+        if(other instanceof CircleBody && isCollidingWithCircle((CircleBody) other))
         {
             resolveCircleCollision((CircleBody) other);
         }
@@ -61,14 +61,10 @@ public class CircleBody extends PhysicsBody
         Vector2 directionalVector = 
         new Vector2(other.position.x - position.x, other.position.y - position.y);
         
-        directionalVector.normalize();
-        directionalVector.multiply(this.speed() * -0.5f);
+        directionalVector = directionalVector.normalize();
+        directionalVector.multiply(this.speed() * -0.75f);
         this.velocity.add(directionalVector);
-    }
-    
-    @Override
-    public void resolveCollision(Collidable other)
-    {
-        
+        other.velocity.multiply(0.75f);
+        this.velocity.add(other.velocity);
     }
 }

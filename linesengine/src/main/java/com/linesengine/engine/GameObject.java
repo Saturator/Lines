@@ -1,23 +1,26 @@
 package com.linesengine.engine;
 
 import com.linesengine.math.PhysicsBody;
+import java.awt.Graphics;
 
 public class GameObject 
 {
     protected String name;
-    protected GameScene scene;
     protected PhysicsBody physicsBody;
     
-    public GameObject(String name, GameScene scene)
+    public GameObject (String name)
     {
         this.name = name;
-        this.scene = scene;
     }
     
-    public GameObject(String name, GameScene scene, PhysicsBody body)
+    public GameObject (String name, PhysicsBody body)
     {
         this.name = name;
-        this.scene = scene;
         this.physicsBody = body;
+    }
+    
+    public void render(Graphics g)
+    {
+        
     }
 }
