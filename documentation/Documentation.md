@@ -19,4 +19,4 @@ Päivä | Tunnit | Kuvaus
 16.09.2016 | 5h | Moottorin rakentelua, checkstyle, pit, testit ja luokkakaavio
 
 **Alustava luokkakaavio:**<br/>
-![Luokkakaavio](http://i.imgur.com/xhvVPit.png "Alustava luokkakaavio")
+![Luokkakaavio](http://i.imgur.com/IKfvOEk.png “Luokkakaavio")
