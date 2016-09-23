@@ -19,7 +19,7 @@ public class Game extends Canvas implements Runnable
     public Game(String projectName)
     {
         this.project = new GameProject(projectName, this);
-        this.project.addScene(new GameScene("test", this.project));
+        this.project.addScene(new GameScene("test"));
         this.project.createWindow();
     }
     

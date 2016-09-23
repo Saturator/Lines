@@ -6,14 +6,12 @@ import java.awt.Graphics;
 
 public class GameScene
 {
-    protected GameProject project;
     protected String name;
     protected ArrayList<GameObject> sceneObjects = new ArrayList<>();
 
-    public GameScene(String name, GameProject project)
+    public GameScene(String name)
     {
         this.name = name;
-        this.project = project;
     }
 
     public ArrayList<GameObject> getAllObjects()

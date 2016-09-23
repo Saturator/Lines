@@ -9,17 +9,14 @@ public class GameSceneTest
     @Test
     public void constructorTest1()
     {
-        GameProject p1 = new GameProject("testP");
-        GameScene s1 = new GameScene("testS", p1);
-        assertEquals(s1.project.name, "testP");
+        GameScene s1 = new GameScene("testS");
         assertEquals(s1.name, "testS");
     }
     
     @Test
     public void objectAddTest1()
     {
-        GameProject p1 = new GameProject("testP");
-        GameScene s1 = new GameScene("testS", p1);
+        GameScene s1 = new GameScene("testS");
         GameObject go1 = new GameObject("gogo");
         s1.addGameObject(go1);
         GameObject foundObj = s1.findGameObject("gogo");
@@ -29,8 +26,7 @@ public class GameSceneTest
     @Test
     public void objectAddTest2()
     {
-        GameProject p1 = new GameProject("testP");
-        GameScene s1 = new GameScene("testS", p1);
+        GameScene s1 = new GameScene("testS");
         GameObject go1 = new GameObject("t1");
         GameObject go2 = new GameObject("t2");
         GameObject go3 = new GameObject("t3");
@@ -52,8 +48,7 @@ public class GameSceneTest
     @Test
     public void objectMoveTest1()
     {
-        GameProject p1 = new GameProject("testP");
-        GameScene s1 = new GameScene("testS", p1);
+        GameScene s1 = new GameScene("testS");
         PhysicsBody body = new CircleBody();
         GameObject go1 = new GameObject("gogo", body);
         go1.physicsBody.setVelocity(new Vector2(10f, 0f));
@@ -67,8 +62,7 @@ public class GameSceneTest
     @Test
     public void objectMoveTest2()
     {
-        GameProject p1 = new GameProject("testP");
-        GameScene s1 = new GameScene("testS", p1);
+        GameScene s1 = new GameScene("testS");
         PhysicsBody body1 = new CircleBody();
         PhysicsBody body2 = new CircleBody();
         PhysicsBody body3 = new CircleBody();
@@ -96,8 +90,7 @@ public class GameSceneTest
     @Test
     public void objectMoveTest3()
     {
-        GameProject p1 = new GameProject("testP");
-        GameScene s1 = new GameScene("testS", p1);
+        GameScene s1 = new GameScene("testS");
         PhysicsBody body = new CircleBody();
         GameObject go1 = new GameObject("gogo", body);
         go1.physicsBody.setVelocity(new Vector2(10f, 10f));

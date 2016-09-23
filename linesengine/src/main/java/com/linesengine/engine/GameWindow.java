@@ -5,14 +5,14 @@ import java.awt.*;
 import javax.swing.*;
 
 public class GameWindow extends Canvas
-{
-    GameProject project;
-    
+{   
+    public String title;
     public static final int WIDTH = 600;
     public static final int HEIGHT = WIDTH / 12 * 9;
     
     public GameWindow(String title, GameProject project)
     {
+        this.title = title;
         JFrame frame = new JFrame(title);
         frame.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         frame.setMaximumSize(new Dimension(WIDTH, HEIGHT));
