@@ -6,15 +6,12 @@ public class BoxBody extends PhysicsBody
     protected float rotation;
     
     /*
-    
-    min represents the bottom left point of a box
-    max represents the upper right point of a box
-    
-         *----------*<-tr
+
+     tl->*----------*<-tr
          |          |
          |          |
          |          | 
-     bl->*----------*
+     bl->*----------*<-br
     
     */
     
@@ -125,7 +122,7 @@ public class BoxBody extends PhysicsBody
     
     public Line[] getCollisionNormals()
     {
-        Line[] normals = new Line[4]; //array of lines, aka 2 points
+        Line[] normals = new Line[4]; //array of lines, = [4][2] list of Vector2's
         
         normals[0] = new Line(this.tl, this.tr);
         normals[1] = new Line(this.tr, this.br);

@@ -48,7 +48,7 @@ public class Game extends Canvas implements Runnable
         }
     }
     
-    //move this to a GameUpdate class
+    //TODO: move this to a GameTime class
     public void run()
     {
         long lastTime = System.nanoTime();
@@ -57,11 +57,13 @@ public class Game extends Canvas implements Runnable
         float delta = 0f;
         long timer = System.currentTimeMillis();
         int frames = 0;
+        
         while(running)
         {
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
             lastTime = now;
+            
             while(delta >= 1)
             {
                 tick();
@@ -71,6 +73,7 @@ public class Game extends Canvas implements Runnable
             {
                 render();
             }
+            
             frames++;
             
             if(System.currentTimeMillis() - timer > 1000)
@@ -85,7 +88,7 @@ public class Game extends Canvas implements Runnable
     
     private void tick()
     {
-        //now we only get scene 0
+        //TODO: we only get scene 0 atm, change it after the scene is up and running
         this.project.getScene(0).updateScene();
     }
     
