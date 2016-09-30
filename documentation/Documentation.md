@@ -1,3 +1,6 @@
+[pit testit] (https://htmlpreview.github.io/?https://github.com/Saturator/lines/blob/master/documentation/pit-reports/201609301635/index.html)
+[checkstyle testit] (https://htmlpreview.github.io/?https://github.com/Saturator/lines/blob/master/documentation/checkstyle/checkstyle.html)
+
 # Lines
 
 **Aihe:** Simppeli 2D fysiikkamoottori tehtynä ilman kolmannen osapuolen kirjastoja. Vielä yksinkertaisempi peli rakennettuna tämän päälle.
