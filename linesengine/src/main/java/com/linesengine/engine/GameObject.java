@@ -3,12 +3,12 @@ package com.linesengine.engine;
 import com.linesengine.math.PhysicsBody;
 import java.awt.Graphics;
 
-public class GameObject 
+public abstract class GameObject 
 {
-    protected String name;
-    protected PhysicsBody physicsBody;
+    public String name;
+    public PhysicsBody physicsBody;
     
-    public GameObject (String name)
+    public GameObject(String name)
     {
         this.name = name;
     }
@@ -24,8 +24,12 @@ public class GameObject
         this.physicsBody = body;
     }
     
-    public void render(Graphics g)
+    public PhysicsBody getPhysicsBody()
     {
-        
+        return this.physicsBody;
     }
+    
+    public abstract void tick();
+    
+    public abstract void render(Graphics g);
 }

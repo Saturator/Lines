@@ -17,7 +17,7 @@ public abstract class PhysicsBody implements Collidable
     {
         //no movement in the beginning
         velocity = new Vector2(0f, 0f);
-        this.friction = 0.1f;
+        this.friction = 0.02f;
     }
     
     public PhysicsBody(float friction)

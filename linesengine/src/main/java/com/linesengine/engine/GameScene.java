@@ -44,7 +44,7 @@ public class GameScene
         return findable;
     }
     
-    public void updateScene()
+    public void tick()
     {
         this.testForAllCollisions();
         this.moveAllObjects();
@@ -80,20 +80,9 @@ public class GameScene
         //otherwise jump out of the nested loop right away
         for (int i = 0; i < sceneObjects.size(); i++)
         {
-            if (i != sceneObjects.size())
+            for (int j = 0; j < sceneObjects.size(); j++)
             {
-                for (int j = i + 1; j < sceneObjects.size(); j++)
-                {
-                    testForSpecificCollision(i, j);
-                }
-            }
-
-            if (i != 0)
-            {
-                for (int j = i - 1; j > 0; j--)
-                {
-                    testForSpecificCollision(i, j);
-                }
+                testForSpecificCollision(i, j);
             }
         }
     }

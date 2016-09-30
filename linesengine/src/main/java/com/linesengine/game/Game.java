@@ -1,6 +1,7 @@
 package com.linesengine.game;
 
 import com.linesengine.engine.*;
+import com.linesengine.math.*;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.image.*;
@@ -9,6 +10,9 @@ import java.awt.Graphics;
 //tämä classi ei ole täysin omatekemä, apua täältä:
 //https://www.youtube.com/watch?v=1gir2R7G9ws
 //passaako tämä 3rd party kirjaston käytöstä vai olisiko suotavampaa luoda oma luuppirakenne?
+
+//pistä pit testit ja checkstylet tänne
+//https://htmlpreview.github.io
 public class Game extends Canvas implements Runnable
 {
     GameProject project;
@@ -20,6 +24,39 @@ public class Game extends Canvas implements Runnable
     {
         this.project = new GameProject(projectName, this);
         this.project.addScene(new GameScene("test"));
+        
+        //the size (25f) is actual size * 0.5
+        PhysicsBody body = new CircleBody(25f, new Vector2(500f, 100f));
+        GameObject circle = new CirclePrimitive("circle1", body);
+        circle.getPhysicsBody().setVelocity(new Vector2(-7f, 2f));
+        
+        PhysicsBody body2 = new CircleBody(25f, new Vector2(50f, 200f));
+        GameObject circle2 = new CirclePrimitive("circle2", body2);
+        circle2.getPhysicsBody().setVelocity(new Vector2(7f, -2f));
+        
+        PhysicsBody body3 = new CircleBody(25f, new Vector2(500f, 200f));
+        GameObject circle3 = new CirclePrimitive("circle3", body3);
+        circle3.getPhysicsBody().setVelocity(new Vector2(-7f, -2f));
+        
+        PhysicsBody body4 = new CircleBody(25f, new Vector2(50f, 100f));
+        GameObject circle4 = new CirclePrimitive("circle4", body4);
+        circle4.getPhysicsBody().setVelocity(new Vector2(5f, -2f));
+        
+        PhysicsBody body5 = new CircleBody(25f, new Vector2(300f, 150));
+        GameObject circle5 = new CirclePrimitive("circle4", body5);
+        circle5.getPhysicsBody().setVelocity(new Vector2(-5f, 1f));
+        
+        PhysicsBody body6 = new CircleBody(25f, new Vector2(250, 0f));
+        GameObject circle6 = new CirclePrimitive("circle4", body6);
+        circle6.getPhysicsBody().setVelocity(new Vector2(5f, -2f));
+        
+        this.project.getScene(0).addGameObject(circle);
+        this.project.getScene(0).addGameObject(circle2);
+        this.project.getScene(0).addGameObject(circle3);
+        this.project.getScene(0).addGameObject(circle4);
+        this.project.getScene(0).addGameObject(circle5);
+        this.project.getScene(0).addGameObject(circle6);
+        
         this.project.createWindow();
     }
     
@@ -67,7 +104,7 @@ public class Game extends Canvas implements Runnable
             while(delta >= 1)
             {
                 tick();
-                delta--;
+                delta--;   
             }
             if(running)
             {
@@ -80,6 +117,7 @@ public class Game extends Canvas implements Runnable
             {
                 timer += 1000;
                 System.out.println("FPS: " + frames);
+                System.out.println(this.project.getScene(0).findGameObject("circle1").getPhysicsBody().getVelocity());
                 frames = 0;
             }
         }
@@ -89,7 +127,8 @@ public class Game extends Canvas implements Runnable
     private void tick()
     {
         //TODO: we only get scene 0 atm, change it after the scene is up and running
-        this.project.getScene(0).updateScene();
+        //tick moves the physics forward when deltaTime is 1, so we have a fixed physics update
+        this.project.getScene(0).tick();
     }
     
     private void render()
@@ -97,13 +136,14 @@ public class Game extends Canvas implements Runnable
         BufferStrategy bs = this.getBufferStrategy();
         if(bs == null)
         {
-            this.createBufferStrategy(2);
+            this.createBufferStrategy(3);
             return;
         }
         
         Graphics g = bs.getDrawGraphics();
-        g.setColor(Color.white);
-        g.fillRect(0, 0, WIDTH, HEIGHT);
+        g.setColor(Color.black);
+        g.fillRect(0, 0, 1000, 1000);
+        this.project.getScene(0).render(g);
         g.dispose();
         bs.show();
     }
