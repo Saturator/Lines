@@ -19,6 +19,6 @@ Päivä | Tunnit | Kuvaus
 16.09.2016 | 5h | Moottorin rakentelua, checkstyle, pit, testit ja luokkakaavio
 22.09.2016 | 4h | Rakentelua, luokkayhteyksiä ja hierarkiaa
 23.09.2016 | 5h | Testejä, moottoripuolen laajennusta, ikkuna aukeaa ja FPS on katossa wOw!
-
+30.09.2016 | 4h | GUI, palleroja liikkellä, paremman prediktiivisen collision systeemin suunnittelua 
 **Alustava luokkakaavio:**<br/>
 ![Luokkakaavio](http://i.imgur.com/IKfvOEk.png “Luokkakaavio")
