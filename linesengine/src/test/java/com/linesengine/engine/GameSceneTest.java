@@ -1,5 +1,7 @@
 package com.linesengine.engine;
 
+import com.linesengine.game.CirclePrimitive;
+import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import com.linesengine.math.*;
@@ -21,6 +23,12 @@ public class GameSceneTest
         s1.addGameObject(go1);
         GameObject foundObj = s1.findGameObject("gogo");
         assertEquals(foundObj.name, go1.name);
+    }
+    
+    @Test
+    public void testSpecificCollisionTest()
+    {
+        
     }
     
     @Test
@@ -100,7 +108,7 @@ public class GameSceneTest
         {
             s1.moveAllObjects();
         }
-        Vector2 expectedPosition = new Vector2(96.1f, 96.1f);
+        Vector2 expectedPosition = new Vector2(232.7f, 232.7f);
         assertEquals(expectedPosition.x, go1.physicsBody.getPosition().x, 0.1f);
         assertEquals(expectedPosition.y, go1.physicsBody.getPosition().y, 0.1f);
     }

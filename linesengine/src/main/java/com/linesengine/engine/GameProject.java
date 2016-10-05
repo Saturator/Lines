@@ -3,11 +3,15 @@ package com.linesengine.engine;
 import java.util.ArrayList;
 import com.linesengine.game.Game;
 
+/**
+ * GameProject class represents a single, whole game.
+ */
+
 public class GameProject
 {
     protected String name;
     protected ArrayList<GameScene> scenes;
-    protected GameWindow window;
+    public GameWindow window;
     protected Game game;
     
     public GameProject(String name)

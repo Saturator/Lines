@@ -1,7 +1,10 @@
 com/linesengine/math/LineTest.class
 com/linesengine/math/PhysicsBodyTest.class
+com/linesengine/engine/CirclePrimitiveTest.class
 com/linesengine/math/CircleBodyTest.class
 com/linesengine/engine/GameObjectTest.class
 com/linesengine/math/Vector2Test.class
 com/linesengine/engine/GameSceneTest.class
 com/linesengine/math/BoxBodyTest.class
+com/linesengine/engine/GameProjectTest.class
+com/linesengine/engine/GameWindowTest.class

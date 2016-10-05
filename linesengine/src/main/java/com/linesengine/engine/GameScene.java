@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import com.linesengine.math.*;
 import java.awt.Graphics;
 
+/**
+ * GameScene class represents one scene within out GameProject.
+ */
+
 public class GameScene
 {
     protected String name;
@@ -78,16 +82,28 @@ public class GameScene
         //make the algorithm so that the inner loops only checks items which
         //are within the max width/height for collision at all
         //otherwise jump out of the nested loop right away
+        
+        boolean[] hasCollided = new boolean[sceneObjects.size()];
         for (int i = 0; i < sceneObjects.size(); i++)
         {
             for (int j = 0; j < sceneObjects.size(); j++)
             {
-                testForSpecificCollision(i, j);
+                if(testForSpecificCollision(i, j) == true)
+                {
+                    //we don't get j cos we get it in the outer loop later
+                    if(!hasCollided[i]) 
+                    {
+                        sceneObjects.get(i).isColliding();
+                        hasCollided[i] = true;
+                        hasCollided[j] = true;
+                    }
+                }
             }
         }
+        
     }
 
-    public void testForSpecificCollision(int i, int j)
+    public boolean testForSpecificCollision(int i, int j)
     {
         if (sceneObjects.get(i).physicsBody != null && sceneObjects.get(j).physicsBody != null)
         {
@@ -97,8 +113,9 @@ public class GameScene
             {
                 PhysicsBody thisBody = sceneObjects.get(i).physicsBody;
                 PhysicsBody otherBody = sceneObjects.get(j).physicsBody;
-                thisBody.testForCollision(otherBody);
+                return thisBody.isColliding(otherBody);
             }
         }
+        return false;
     }
 }

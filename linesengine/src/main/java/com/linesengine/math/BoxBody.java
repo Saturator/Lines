@@ -1,5 +1,9 @@
 package com.linesengine.math;
 
+/**
+ * BoxBody is a child object of PhysicsBody that simulates collision and movement for a box shaped are
+ */
+
 public class BoxBody extends PhysicsBody
 {
     protected Vector2 tl, tr, br, bl; //top left, top right, bottom right, bottom left
@@ -16,6 +20,16 @@ public class BoxBody extends PhysicsBody
     */
     
     //create a box that is 1x1 by default
+    public BoxBody()
+    {
+        this.tl = new Vector2(-0.5f, 0.5f);
+        this.tr = new Vector2(0.5f, 0.5f);
+        this.br = new Vector2(0.5f, -0.5f);
+        this.bl = new Vector2(-0.5f, -0.5f);
+        this.position = new Vector2(0f, 0f);
+        rotation = 0f;
+    }
+    
     public BoxBody(Vector2 tl, Vector2 tr, Vector2 br, Vector2 bl)
     {
         this.tl = tl;
@@ -66,16 +80,17 @@ public class BoxBody extends PhysicsBody
     }
     
     @Override
-    public void testForCollision(Collidable other)
+    public boolean isColliding(Collidable other)
     {
         if(other instanceof CircleBody)
         {
-            
+            return true;
         }
         else if(other instanceof BoxBody && isCollidingWithBox((BoxBody) other))
         {
-            
+            return true;
         }
+        return false;
     }
     
     public boolean isCollidingWithBox(BoxBody other)

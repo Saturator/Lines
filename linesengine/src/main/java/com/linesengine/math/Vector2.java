@@ -1,6 +1,8 @@
 package com.linesengine.math;
 
-import java.text.Format.*;
+/**
+ * Vector2 is a class that represents a single point in 2D space.
+ */
 
 public class Vector2 
 {

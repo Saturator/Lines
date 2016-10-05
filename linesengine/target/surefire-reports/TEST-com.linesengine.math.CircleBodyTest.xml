@@ -64,6 +64,6 @@
   <testcase classname="com.linesengine.math.CircleBodyTest" name="collisionTest2" time="0"/>
   <testcase classname="com.linesengine.math.CircleBodyTest" name="collisionTest3" time="0"/>
   <testcase classname="com.linesengine.math.CircleBodyTest" name="collisionTest4" time="0"/>
-  <testcase classname="com.linesengine.math.CircleBodyTest" name="resolveCircleCollisionTest1" time="0"/>
-  <testcase classname="com.linesengine.math.CircleBodyTest" name="resolveCircleCollisionTest2" time="0.001"/>
+  <testcase classname="com.linesengine.math.CircleBodyTest" name="resolveCircleCollisionTest1" time="0.001"/>
+  <testcase classname="com.linesengine.math.CircleBodyTest" name="resolveCircleCollisionTest2" time="0"/>
 </testsuite>

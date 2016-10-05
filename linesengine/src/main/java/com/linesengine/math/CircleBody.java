@@ -1,5 +1,9 @@
 package com.linesengine.math;
 
+/**
+ * CircleBody is a child object of PhysicsBody that simulates collision and movement for a circle shaped are
+ */
+
 public class CircleBody extends PhysicsBody
 {
     protected float radius;
@@ -35,20 +39,24 @@ public class CircleBody extends PhysicsBody
     }  
     
     @Override
-    public void testForCollision(Collidable other)
+    public boolean isColliding(Collidable other)
     {
         if(other instanceof CircleBody && isCollidingWithCircle((CircleBody) other))
         {
             resolveCircleCollision((CircleBody) other);
+            return true;
         }
         else if(other instanceof BoxBody)
         {
             //isCollidingWithBox((BoxBody) other);
         }
+        return false;
     }
     
     public boolean isCollidingWithCircle(CircleBody other)
     {
+        if(other.equals(this)) return false;
+        
         float betweenLength = 
         new Vector2(other.position.x - this.position.x, other.position.y - this.position.y).length();
 
@@ -58,16 +66,13 @@ public class CircleBody extends PhysicsBody
     //think if this should return a vector or just add to the overclass right away
     public void resolveCircleCollision(CircleBody other)
     {
-        if(other.equals(this))
-        {
-            return;
-        }
+        if(other.equals(this)) return;
         
         Vector2 directionalVector = 
         new Vector2(other.position.x - position.x, other.position.y - position.y);
         
         directionalVector = directionalVector.normalize();
-        directionalVector.multiply((this.speed() * -0.4f) + (other.speed() * -0.5f));
+        directionalVector.multiply((this.speed() * -0.5f) + (other.speed() * -0.4f));   
         this.velocity.add(directionalVector);
     }
 }

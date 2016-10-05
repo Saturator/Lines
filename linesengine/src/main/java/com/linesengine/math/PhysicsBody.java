@@ -1,5 +1,10 @@
 package com.linesengine.math;
 
+/**
+ * PhysicsBody is a parent physics class that contains all the functions and variables
+ * shared between all physical object.
+ */
+
 public abstract class PhysicsBody implements Collidable
 {
     protected Vector2 velocity;
@@ -39,7 +44,7 @@ public abstract class PhysicsBody implements Collidable
     }
     
     @Override
-    public abstract void testForCollision(Collidable other);
+    public abstract boolean isColliding(Collidable other);
     
     public float speed()
     {

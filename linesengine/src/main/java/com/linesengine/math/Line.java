@@ -1,5 +1,10 @@
 package com.linesengine.math;
 
+/**
+ * Line is a class that mathematically represents a line in two dimensional space.
+ * This means that we have two 2D vector points.
+ */
+
 public class Line
 {
     public Vector2[] points;

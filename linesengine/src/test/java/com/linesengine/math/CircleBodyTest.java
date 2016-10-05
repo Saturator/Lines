@@ -52,7 +52,7 @@ public class CircleBodyTest
         CircleBody c2 = new CircleBody();
         c1.velocity = new Vector2(-10f, 0f);
         c1.resolveCircleCollision(c2);
-        Vector2 expectedResult = new Vector2(-4.69f, 5.3f);
+        Vector2 expectedResult = new Vector2(-7.17f, 2.82f);
         assertEquals(c1.getVelocity().x, expectedResult.x, 0.01f);
         assertEquals(c1.getVelocity().y, expectedResult.y, 0.01f);
     }
@@ -64,7 +64,7 @@ public class CircleBodyTest
         CircleBody c2 = new CircleBody();
         c1.velocity = new Vector2(5f, 0f);
         c1.resolveCircleCollision(c2);
-        Vector2 expectedResult = new Vector2(2.34f, -2.65f);
+        Vector2 expectedResult = new Vector2(3.58f, -1.41f);
         System.out.println(c1.getVelocity());
         assertEquals(c1.getVelocity().x, expectedResult.x, 0.01f);
         assertEquals(c1.getVelocity().y, expectedResult.y, 0.01f);

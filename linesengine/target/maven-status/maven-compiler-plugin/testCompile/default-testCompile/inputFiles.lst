@@ -1,7 +1,10 @@
+/Users/ematias/lines/linesengine/src/test/java/com/linesengine/engine/GameProjectTest.java
+/Users/ematias/lines/linesengine/src/test/java/com/linesengine/engine/GameWindowTest.java
 /Users/ematias/lines/linesengine/src/test/java/com/linesengine/math/CircleBodyTest.java
 /Users/ematias/lines/linesengine/src/test/java/com/linesengine/engine/GameObjectTest.java
 /Users/ematias/lines/linesengine/src/test/java/com/linesengine/math/BoxBodyTest.java
 /Users/ematias/lines/linesengine/src/test/java/com/linesengine/math/LineTest.java
+/Users/ematias/lines/linesengine/src/test/java/com/linesengine/engine/CirclePrimitiveTest.java
 /Users/ematias/lines/linesengine/src/test/java/com/linesengine/engine/GameSceneTest.java
 /Users/ematias/lines/linesengine/src/test/java/com/linesengine/math/PhysicsBodyTest.java
 /Users/ematias/lines/linesengine/src/test/java/com/linesengine/math/Vector2Test.java
