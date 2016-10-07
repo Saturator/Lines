@@ -7,14 +7,17 @@ package com.linesengine.math;
 
 public abstract class PhysicsBody implements Collidable
 {
-    protected Vector2 velocity;
-    protected Vector2 position;
+    //public float G = 
     
-    protected float width;
-    protected float height;
+    public Vector2 velocity;
+    public Vector2 position;
     
-    protected float mass;
-    protected float friction;
+    public float width;
+    public float height;
+    
+    public float mass;
+    public float friction;
+    public float gravity;
     //you can add gravity by adding small a down vector 
     //that is applied on every timestep
     
@@ -77,6 +80,11 @@ public abstract class PhysicsBody implements Collidable
         this.position = v;
     }
     
+    public void setGravity(float amt)
+    {
+        this.gravity = -amt;
+    }
+    
     public abstract void move(Vector2 movement);
     
     public void decreaseSpeed()
@@ -94,5 +102,11 @@ public abstract class PhysicsBody implements Collidable
                 this.velocity = new Vector2(0f, 0f);
             }
         }
+    }
+    
+    public void doGravity(PhysicsBody other)
+    {
+        this.velocity.add(new Vector2(0f, gravity));
+        this.gravity += gravity/75;
     }
 }

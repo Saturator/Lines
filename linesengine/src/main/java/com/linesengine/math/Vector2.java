@@ -62,6 +62,8 @@ public class Vector2
         }
     }
     
+    
+    
     public void rotate(float angle)
     {
         //rotation matrix is used here

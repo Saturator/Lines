@@ -10,6 +10,7 @@ import java.awt.Graphics;
 
 public class GameScene
 {
+    public int ticks = 0;
     protected String name;
     protected ArrayList<GameObject> sceneObjects = new ArrayList<>();
 
@@ -50,6 +51,7 @@ public class GameScene
     
     public void tick()
     {
+        this.ticks++;
         this.testForAllCollisions();
         this.moveAllObjects();
     }
@@ -99,8 +101,7 @@ public class GameScene
                     }
                 }
             }
-        }
-        
+        }  
     }
 
     public boolean testForSpecificCollision(int i, int j)

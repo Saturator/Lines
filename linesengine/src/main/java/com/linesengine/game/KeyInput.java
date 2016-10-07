@@ -9,5 +9,6 @@ public class KeyInput extends KeyAdapter
     {
         int key = e.getKeyCode();
         System.out.println(key);
+        if(key == 27) System.exit(0);
     }
 }

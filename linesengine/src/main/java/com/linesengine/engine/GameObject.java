@@ -27,12 +27,6 @@ public abstract class GameObject
         this.color = Color.white;
     }
     
-    public void addPhysicsBody(PhysicsBody body)
-    {
-        this.physicsBody = body;
-        this.color = Color.white;
-    }
-    
     public GameObject (PhysicsBody body, Color c)
     {
         this.name = "";
@@ -57,6 +51,11 @@ public abstract class GameObject
         this.name = name;
         this.physicsBody = body;
         this.color = c;
+    }
+    
+    public void addPhysicsBody(PhysicsBody body)
+    {
+        this.physicsBody = body;
     }
     
     public PhysicsBody getPhysicsBody()

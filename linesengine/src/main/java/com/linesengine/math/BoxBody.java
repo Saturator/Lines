@@ -26,17 +26,9 @@ public class BoxBody extends PhysicsBody
         this.tr = new Vector2(0.5f, 0.5f);
         this.br = new Vector2(0.5f, -0.5f);
         this.bl = new Vector2(-0.5f, -0.5f);
-        this.position = new Vector2(0f, 0f);
-        rotation = 0f;
-    }
-    
-    public BoxBody(Vector2 tl, Vector2 tr, Vector2 br, Vector2 bl)
-    {
-        this.tl = tl;
-        this.tr = tr;
-        this.br = br;
-        this.bl = bl;
-        this.position = this.middle();
+        super.position = new Vector2(0f, 0f);
+        super.width = 1f;
+        super.height = 1f;
         rotation = 0f;
     }
     
@@ -46,26 +38,30 @@ public class BoxBody extends PhysicsBody
         this.tr = new Vector2(0.5f * size, 0.5f * size);
         this.br = new Vector2(0.5f * size, -0.5f * size);
         this.bl = new Vector2(-0.5f * size, -0.5f * size);
-        this.position = new Vector2(0f, 0f);
+        super.position = new Vector2(0f, 0f);
+        super.width = size;
+        super.height = size;
         rotation = 0f;
     }
     
     public BoxBody(float size, Vector2 position)
     {
-        this.tl = new Vector2(-0.5f * size, 0.5f * size);
-        this.tr = new Vector2(0.5f * size, 0.5f * size);
-        this.br = new Vector2(0.5f * size, -0.5f * size);
-        this.bl = new Vector2(-0.5f * size, -0.5f * size);
-        this.position = position;
+        this.tl = new Vector2((-0.5f * size) + position.x, (0.5f * size) + position.y);
+        this.tr = new Vector2((0.5f * size) + position.x, (0.5f * size) + position.y);
+        this.br = new Vector2((0.5f * size) + position.x, (-0.5f * size) + position.y);
+        this.bl = new Vector2((-0.5f * size) + position.x, (-0.5f * size) + position.y);
+        super.position = position;
+        super.width = size;
+        super.height = size;
         rotation = 0f;
     }
     
     public void scaleBox(float size)
     {
-        this.tl.add(new Vector2(-0.5f * size, 0.5f * size));
-        this.tr.add(new Vector2(0.5f * size, 0.5f * size));
-        this.br.add(new Vector2(0.5f * size, -0.5f * size));
-        this.bl.add(new Vector2(-0.5f * size, -0.5f * size));
+        this.tl = new Vector2((-0.5f * size) + super.position.x, (0.5f * size) + super.position.y);
+        this.tr = new Vector2((0.5f * size) + super.position.x, (0.5f * size) + super.position.y);
+        this.br = new Vector2((0.5f * size) + super.position.x, (-0.5f * size) + super.position.y);
+        this.bl = new Vector2((-0.5f * size) + super.position.x, (-0.5f * size) + super.position.y);
     }
     
     @Override
@@ -76,7 +72,7 @@ public class BoxBody extends PhysicsBody
         this.br = new Vector2(this.br.x + movement.x, this.br.y + movement.y);
         this.bl = new Vector2(this.bl.x + movement.x, this.bl.y + movement.y);
         
-        this.position.add(movement);
+        super.position.add(movement);
     }
     
     @Override
@@ -88,40 +84,71 @@ public class BoxBody extends PhysicsBody
         }
         else if(other instanceof BoxBody && isCollidingWithBox((BoxBody) other))
         {
+            System.out.println("hola");
             return true;
         }
         return false;
     }
     
-    public boolean isCollidingWithBox(BoxBody other)
+    //doesnt work properly atm
+    public Vector2 closestPointToMid(BoxBody other)
     {
-        /*
+        Vector2 mid = this.middle();
+        Vector2[] otherPts = new Vector2[] {other.tl, other.tr, other.br, other.bl};
+        Vector2 closestToMid = other.tl;
+        for(Vector2 otherPt : otherPts)
+        {
+            Vector2 diff = new Vector2(mid.x - otherPt.x, mid.y - otherPt.y);
+            if(diff.length() < closestToMid.length())
+            {
+                closestToMid = otherPt;
+            }
+        }
+        return closestToMid;
+    }
+    
+    //this is still under work
+    public boolean isCollidingWithBox(BoxBody other)
+    {   
+        if(other == this) return false;
         
-        *------*
-        | this |
-        |   *--|------*
-        |   |  |      |
-        *------*      |
-            |  other  |
-            *---------*
+        Line up = new Line(this.tl, this.tr);
+        Line right = new Line(this.tr, this.br);
+        Line down = new Line(this.br, this.bl);
+        Line left = new Line(this.bl, this.tl);
+        Vector2 upMid = up.getMidpoint();
+        Vector2 rightMid = right.getMidpoint();
+        Vector2 downMid = down.getMidpoint();
+        Vector2 leftMid = left.getMidpoint();
         
-        in this case: 
-        (this.tr.x > other.bl.x) && (this.bl.y < other.tr.y)
+        Vector2 closestPt = closestPointToMid(other);
+        Vector2[] diffs = new Vector2[4];
+        diffs[0] = new Vector2(closestPt.x - upMid.x, closestPt.y - upMid.y);
+        diffs[1] = new Vector2(closestPt.x - rightMid.x, closestPt.y - rightMid.y);
+        diffs[2] = new Vector2(closestPt.x - downMid.x, closestPt.y - downMid.y);
+        diffs[3] = new Vector2(closestPt.x - leftMid.x, closestPt.y - leftMid.y);
         
-        in plain english:
-        this box's upper right corner's x position is larger than
-        the other box's lower left corner's x position
-        and
-        this box's lower left corner's y position is smaller than
-        the other box's upper right corner's y position
+        Vector2[] normals = new Vector2[4];
+        Vector2 mid = this.middle();
+        normals[0] = new Vector2(upMid.x - mid.x, upMid.y - mid.y);
+        normals[1] = new Vector2(rightMid.x - mid.x, rightMid.y - mid.y);
+        normals[2] = new Vector2(downMid.x - mid.x, downMid.y - mid.y);
+        normals[3] = new Vector2(leftMid.x - mid.x, leftMid.y - mid.y);
+        System.out.println(closestPt);
+        System.out.println(this);
+        //we look for one vector difference where both values are positive
+        boolean colliding = false;
+        for(int i = 0; i < normals.length; i++)
+        {
+            //System.out.println(normals[i].dotProduct(diffs[i]));
+            if(normals[i].dotProduct(diffs[i]) < 0)
+            {
+                colliding = true;
+                break;
+            }
+        }
         
-        so the collision returns true
-        */
-        
-        return
-        (this.tr.x > other.bl.x || this.bl.x < other.tr.x)
-        &&
-        (this.tr.y > other.bl.y || this.bl.y < other.tr.y);
+        return colliding;
     }
     
     public float distance(Vector2 point)
@@ -186,7 +213,7 @@ public class BoxBody extends PhysicsBody
     @Override
     public String toString()
     {
-        return "tl: " + this.tl + ", tr: " + this.tr + ", br: " + this.br + ", bl: " + this.bl +
-               ", mid: " + this.middle();
+        return "tl: (" + this.tl + "), tr: (" + this.tr + "), br: (" + this.br + "), bl: (" + this.bl +
+               "), mid: " + this.middle();
     }
 }
