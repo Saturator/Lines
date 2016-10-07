@@ -4,6 +4,7 @@ import com.linesengine.engine.GameObject;
 import java.awt.Graphics;
 import com.linesengine.math.*;
 import java.awt.Color;
+import java.awt.Font;
 
 public class CirclePrimitive extends GameObject
 {
@@ -40,7 +41,9 @@ public class CirclePrimitive extends GameObject
     public void render(Graphics g)
     {
         g.setColor(this.color);
-        g.fillOval((int)this.physicsBody.getPosition().x, (int)this.physicsBody.getPosition().y,
-                   (int) radius, (int) radius);
+        g.setFont(new Font("Courier", Font.PLAIN, 10));
+        Vector2 pos = this.physicsBody.getPosition();
+        g.fillOval((int)pos.x, (int)pos.y, (int) radius, (int) radius);
+        g.drawString(pos + "", (int)pos.x - 28, (int)pos.y - 5);
     }    
 }
