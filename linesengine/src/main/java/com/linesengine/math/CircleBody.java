@@ -8,6 +8,8 @@ public class CircleBody extends PhysicsBody
 {
     protected float radius;
     
+    public Vector2[] getPts() {return null;};
+    
     public CircleBody()
     {
         this.radius = 1f;

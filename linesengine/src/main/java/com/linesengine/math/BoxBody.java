@@ -6,7 +6,7 @@ package com.linesengine.math;
 
 public class BoxBody extends PhysicsBody
 {
-    protected Vector2 tl, tr, br, bl; //top left, top right, bottom right, bottom left
+    public Vector2 tl, tr, br, bl; //top left, top right, bottom right, bottom left
     protected float rotation;
     
     /*
@@ -19,13 +19,18 @@ public class BoxBody extends PhysicsBody
     
     */
     
+    public Vector2[] getPts()
+    {
+        return new Vector2[] {tl, tr, br, bl};
+    }
+    
     //create a box that is 1x1 by default
     public BoxBody()
     {
-        this.tl = new Vector2(-0.5f, 0.5f);
-        this.tr = new Vector2(0.5f, 0.5f);
-        this.br = new Vector2(0.5f, -0.5f);
-        this.bl = new Vector2(-0.5f, -0.5f);
+        this.tl = new Vector2(-0.5f, -0.5f);
+        this.tr = new Vector2(0.5f, -0.5f);
+        this.br = new Vector2(0.5f, 0.5f);
+        this.bl = new Vector2(-0.5f, 0.5f);
         super.position = new Vector2(0f, 0f);
         super.width = 1f;
         super.height = 1f;
@@ -34,23 +39,11 @@ public class BoxBody extends PhysicsBody
     
     public BoxBody(float size)
     {
-        this.tl = new Vector2(-0.5f * size, 0.5f * size);
-        this.tr = new Vector2(0.5f * size, 0.5f * size);
-        this.br = new Vector2(0.5f * size, -0.5f * size);
-        this.bl = new Vector2(-0.5f * size, -0.5f * size);
+        this.tl = new Vector2(-0.5f * size, -0.5f * size);
+        this.tr = new Vector2(0.5f * size, -0.5f * size);
+        this.br = new Vector2(0.5f * size, 0.5f * size);
+        this.bl = new Vector2(-0.5f * size, 0.5f * size);
         super.position = new Vector2(0f, 0f);
-        super.width = size;
-        super.height = size;
-        rotation = 0f;
-    }
-    
-    public BoxBody(float size, Vector2 position)
-    {
-        this.tl = new Vector2((-0.5f * size) + position.x, (0.5f * size) + position.y);
-        this.tr = new Vector2((0.5f * size) + position.x, (0.5f * size) + position.y);
-        this.br = new Vector2((0.5f * size) + position.x, (-0.5f * size) + position.y);
-        this.bl = new Vector2((-0.5f * size) + position.x, (-0.5f * size) + position.y);
-        super.position = position;
         super.width = size;
         super.height = size;
         rotation = 0f;
@@ -144,10 +137,10 @@ public class BoxBody extends PhysicsBody
         
         Vector2[] normals = new Vector2[4];
         Vector2 mid = this.middle();
-        normals[0] = new Vector2(upMid.x - mid.x, upMid.y - mid.y);
-        normals[1] = new Vector2(rightMid.x - mid.x, rightMid.y - mid.y);
-        normals[2] = new Vector2(downMid.x - mid.x, downMid.y - mid.y);
-        normals[3] = new Vector2(leftMid.x - mid.x, leftMid.y - mid.y);
+        normals[0] = new Vector2(upMid.x - mid.x, upMid.y - mid.y).normalize();
+        normals[1] = new Vector2(rightMid.x - mid.x, rightMid.y - mid.y).normalize();
+        normals[2] = new Vector2(downMid.x - mid.x, downMid.y - mid.y).normalize();
+        normals[3] = new Vector2(leftMid.x - mid.x, leftMid.y - mid.y).normalize();
         //System.out.println(closestPt);
         //System.out.println(this);
         //we look for one vector difference where both values are positive
@@ -157,6 +150,14 @@ public class BoxBody extends PhysicsBody
             //System.out.println(normals[i].dotProduct(diffs[i]));
             if(normals[i].dotProduct(diffs[i]) < 0)
             {
+                System.out.println("rightMid: " + rightMid);
+                System.out.println("leftMid: " + leftMid);
+                System.out.println("downMid: " + downMid);
+                System.out.println("upMid: " + upMid);
+                System.out.println(this);
+                System.out.println(normals[i]);
+                System.out.println(diffs[i]);
+                System.out.println(normals[i].dotProduct(diffs[i]));
                 colliding = true;
                 break;
             }

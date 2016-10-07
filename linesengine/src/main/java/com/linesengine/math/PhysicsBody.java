@@ -21,6 +21,8 @@ public abstract class PhysicsBody implements Collidable
     //you can add gravity by adding small a down vector 
     //that is applied on every timestep
     
+    public abstract Vector2[] getPts();
+    
     public PhysicsBody()
     {
         //no movement in the beginning
