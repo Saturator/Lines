@@ -8,9 +8,11 @@
 **Käyttäjät:** Kuka tahansa
 
 **Toiminnot:** 
-* Päävalikko
-  * Aloita peli
-  * Asetukset
+* Osumantunnistus sekä ympyröille että neliöille
+* Fysiikan ja painovoiman mallintaimen
+* Pikanäppäimien avulla parametrien seuraaminen
+* Uusein objektien luominen ja niillä leikittely
+* Pelimoottoriominaisuudet kuten peliobjektit, projektit ja scenet
     
 **Alustava luokkakaavio:**<br/>
 ![Luokkakaavio](http://i.imgur.com/IKfvOEk.png “Luokkakaavio")
