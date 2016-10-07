@@ -61,8 +61,8 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.linesengine.math.LineTest" name="rotationTest1" time="0"/>
+  <testcase classname="com.linesengine.math.LineTest" name="rotationTest1" time="0.001"/>
   <testcase classname="com.linesengine.math.LineTest" name="rotationTest2" time="0"/>
   <testcase classname="com.linesengine.math.LineTest" name="midpointTest1" time="0"/>
-  <testcase classname="com.linesengine.math.LineTest" name="midpointTest2" time="0.001"/>
+  <testcase classname="com.linesengine.math.LineTest" name="midpointTest2" time="0"/>
 </testsuite>
