@@ -28,10 +28,6 @@ public class CirclePrimitive extends GameObject
     @Override
     public void isColliding()
     {
-        if(super.name.equals("dodo")) 
-        {
-            //System.out.println("holler");
-        }
     }
 
     @Override

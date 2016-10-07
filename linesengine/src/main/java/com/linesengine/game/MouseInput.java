@@ -35,7 +35,7 @@ public class MouseInput extends MouseAdapter
     @Override
     public void mouseReleased(MouseEvent e)
     {
-        
+        /*
         //this is circle
         float radius = 50;
         end = new Vector2(e.getX() - (radius/2), e.getY() - (radius/2));
@@ -47,8 +47,8 @@ public class MouseInput extends MouseAdapter
         body.setVelocity(diff);
         GameObject go = new CirclePrimitive("dodo", body, RNG.getRandomColor(), radius);
         this.project.getScene(0).addGameObject(go);
+        */
         
-        /*
         end = new Vector2(e.getX() - (size/2), e.getY() - (size/2));
         start = new Vector2(start.x - (size/2), start.y - (size/2));
         PhysicsBody body = new BoxBody(size/2, start);
@@ -58,6 +58,6 @@ public class MouseInput extends MouseAdapter
         GameObject go = new BoxPrimitive("boxy", body, Color.CYAN);
         this.project.getScene(0).addGameObject(go);
         size--;
-        */
+        
     }
 }

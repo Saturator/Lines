@@ -148,8 +148,8 @@ public class BoxBody extends PhysicsBody
         normals[1] = new Vector2(rightMid.x - mid.x, rightMid.y - mid.y);
         normals[2] = new Vector2(downMid.x - mid.x, downMid.y - mid.y);
         normals[3] = new Vector2(leftMid.x - mid.x, leftMid.y - mid.y);
-        System.out.println(closestPt);
-        System.out.println(this);
+        //System.out.println(closestPt);
+        //System.out.println(this);
         //we look for one vector difference where both values are positive
         boolean colliding = false;
         for(int i = 0; i < normals.length; i++)
