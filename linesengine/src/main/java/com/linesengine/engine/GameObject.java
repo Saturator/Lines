@@ -20,33 +20,33 @@ public abstract class GameObject
         this.color = Color.white;
     }
     
-    public GameObject (String name, PhysicsBody body)
+    public GameObject(String name, PhysicsBody body)
     {
         this.name = name;
         this.physicsBody = body;
         this.color = Color.white;
     }
     
-    public GameObject (PhysicsBody body, Color c)
+    public GameObject(PhysicsBody body, Color c)
     {
         this.name = "";
         this.physicsBody = body;
         this.color = c;
     }
     
-    public GameObject (Color c)
+    public GameObject(Color c)
     {
         this.name = "";
         this.color = c;
     }
     
-    public GameObject (String name, Color c)
+    public GameObject(String name, Color c)
     {
         this.name = name;
         this.color = c;
     }
     
-    public GameObject (String name, PhysicsBody body, Color c)
+    public GameObject(String name, PhysicsBody body, Color c)
     {
         this.name = name;
         this.physicsBody = body;
