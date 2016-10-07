@@ -16,6 +16,10 @@ public class Line
         this.points[1] = p1;
     }
     
+    /**
+     * Gets the point exactly in the middle of the line.
+     * @return the midpoint
+     */
     public Vector2 getMidpoint()
     {
         Vector2 midpoint = new Vector2();
@@ -26,6 +30,10 @@ public class Line
         return new Vector2(midpoint.x/2, midpoint.y/2);
     }
     
+    /**
+     * Rotates the line
+     * @param angle 
+     */
     public void rotate(float angle)
     {
         Vector2 midpoint = this.getMidpoint();

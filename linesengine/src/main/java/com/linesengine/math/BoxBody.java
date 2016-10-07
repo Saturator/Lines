@@ -56,6 +56,10 @@ public class BoxBody extends PhysicsBody
         rotation = 0f;
     }
     
+    /**
+     * Scales a box outwards from the center equally.
+     * @param size the size of the resulting box
+     */
     public void scaleBox(float size)
     {
         this.tl = new Vector2((-0.5f * size) + super.position.x, (0.5f * size) + super.position.y);
@@ -91,6 +95,11 @@ public class BoxBody extends PhysicsBody
     }
     
     //doesnt work properly atm
+    /**
+     * Gets the closest point of another box to this box's center.
+     * @param other
+     * @return 
+     */
     public Vector2 closestPointToMid(BoxBody other)
     {
         Vector2 mid = this.middle();
@@ -108,6 +117,11 @@ public class BoxBody extends PhysicsBody
     }
     
     //this is still under work
+    /**
+     * Checks whether this specific box is colliding with another specific box.
+     * @param other
+     * @return 
+     */
     public boolean isCollidingWithBox(BoxBody other)
     {   
         if(other == this) return false;
@@ -151,17 +165,30 @@ public class BoxBody extends PhysicsBody
         return colliding;
     }
     
+    /**
+     * Distance from the center of the box to a specific point.
+     * @param point
+     * @return 
+     */
     public float distance(Vector2 point)
     {
         Vector2 middle = this.middle();
         return new Vector2(middle.x - point.x, middle.y - point.y).length();
     }
     
+    /**
+     * Gets the middle of the box in world space.
+     * @return 
+     */
     public Vector2 middle()
     {
         return new Vector2((tr.x + tl.x) / 2, (tr.y + br.y) / 2);
     }
     
+    /**
+     * Creates collision normals, which are lines perpendicular to the given sides.
+     * @return 
+     */
     public Line[] getCollisionNormals()
     {
         Line[] normals = new Line[4]; //array of lines, = [4][2] list of Vector2's
@@ -179,6 +206,10 @@ public class BoxBody extends PhysicsBody
         return normals;
     }
     
+    /**
+     * Rotates the box.
+     * @param angle the amount of rotation as an angle
+     */
     public void rotate(float angle)
     {           
         //these call the vector2 rotation func, not this one

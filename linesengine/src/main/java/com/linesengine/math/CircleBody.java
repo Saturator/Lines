@@ -53,6 +53,11 @@ public class CircleBody extends PhysicsBody
         return false;
     }
     
+    /**
+     * Checks whether the circle is colliding with another specific circle.
+     * @param other the other circle
+     * @return 
+     */
     public boolean isCollidingWithCircle(CircleBody other)
     {
         if(other.equals(this)) return false;
@@ -64,6 +69,10 @@ public class CircleBody extends PhysicsBody
     }
     
     //think if this should return a vector or just add to the overclass right away
+    /**
+     * Resolves the circle on circle collision by adding the resulting velocity changes.
+     * @param other the other circle
+     */
     public void resolveCircleCollision(CircleBody other)
     {
         if(other.equals(this)) return;

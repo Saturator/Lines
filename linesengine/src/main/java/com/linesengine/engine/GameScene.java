@@ -36,6 +36,11 @@ public class GameScene
 
     //right now you CANT find two objects if they have the same name,
     //so you better make a thing for that
+    /**
+     * Finds a specific game object by its name.
+     * @param name name of the object to be found
+     * @return found game object
+     */
     public GameObject findGameObject(String name)
     {
         GameObject findable = null;
@@ -49,6 +54,9 @@ public class GameScene
         return findable;
     }
     
+    /**
+     * Simulates one physics tick within the whole scene.
+     */
     public void tick()
     {
         this.ticks++;
@@ -57,6 +65,10 @@ public class GameScene
     }
     
     //put the iterations in only one place after getting this to work
+    /**
+     * Calls the render method for all the game objects in the scene.
+     * @param g the graphics object to be rendered on
+     */
     public void render(Graphics g)
     {
         for(int i = 0; i < sceneObjects.size(); i++)
@@ -65,6 +77,10 @@ public class GameScene
         }
     }
 
+    /**
+     * Moves all the objects in the scene according to the parameters in
+     * their matching physics body.
+     */
     public void moveAllObjects()
     {
         for(int i = 0; i < sceneObjects.size(); i++)
@@ -78,6 +94,9 @@ public class GameScene
         }
     }
     
+    /**
+     * Tests for all the collisions between objects within the scene.
+     */
     public void testForAllCollisions()
     {
         //this is supersuper slow right now!!
@@ -104,6 +123,12 @@ public class GameScene
         }  
     }
 
+    /**
+     * Tests for a specific collision. Called from 'testForAllCollisions'.
+     * @param i index of game object A
+     * @param j index of game object B
+     * @return returns whether a specific collision happened or not
+     */
     public boolean testForSpecificCollision(int i, int j)
     {
         if (sceneObjects.get(i).physicsBody != null && sceneObjects.get(j).physicsBody != null)

@@ -87,6 +87,9 @@ public abstract class PhysicsBody implements Collidable
     
     public abstract void move(Vector2 movement);
     
+    /**
+     * Decreases the speed of the physics body by the amount of given friction.
+     */
     public void decreaseSpeed()
     {
         //we multiply the velocity vector by friction each time step
@@ -104,6 +107,10 @@ public abstract class PhysicsBody implements Collidable
         }
     }
     
+    /**
+     * Adds downward or upward gravity to this physics body.
+     * @param other 
+     */
     public void doGravity(PhysicsBody other)
     {
         this.velocity.add(new Vector2(0f, gravity));

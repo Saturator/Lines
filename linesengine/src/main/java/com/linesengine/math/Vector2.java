@@ -26,28 +26,49 @@ public class Vector2
         v.y = y;
     }
     
+    /**
+     * Adds another vector to this vector.
+     * @param other 
+     */
     public void add(Vector2 other)
     {
          this.x += other.x;
          this.y += other.y;
     }
     
+    /**
+     * Multiplies this vector by a float scalar.
+     * @param multiplier 
+     */
     public void multiply(float multiplier)
     {
         this.x *= multiplier; 
         this.y *= multiplier;
     }
     
+    /**
+     * Gives this vector's length as a scalar.
+     * @return 
+     */
     public float length()
     {
         return (float) Math.sqrt((this.x * this.x) + (this.y * this.y));
     }
     
+    /**
+     * Creates a dot product scalar.
+     * @param other the other vector to project this vector on
+     * @return 
+     */
     public float dotProduct(Vector2 other)
     {
         return (this.x * other.x) + (this.y * other.y);
     }
     
+    /**
+     * Normalizes a vector's length to one.
+     * @return resulting normalized vector
+     */
     public Vector2 normalize()
     {
         float length = this.length();
@@ -62,8 +83,10 @@ public class Vector2
         }
     }
     
-    
-    
+    /**
+     * Rotates this vector.
+     * @param angle the amount to rotate by
+     */
     public void rotate(float angle)
     {
         //rotation matrix is used here

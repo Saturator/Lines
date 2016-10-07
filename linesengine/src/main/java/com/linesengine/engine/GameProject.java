@@ -31,9 +31,14 @@ public class GameProject
     {
         this.game = game;
     }
+
+    public String getName()
+    {
+        return this.name;
+    }
     
     /**
-     * hello
+     * Creates a window for the specific project. 
      */
     public void createWindow()
     {
@@ -48,11 +53,11 @@ public class GameProject
         }
     }
     
-    public String getName()
-    {
-        return this.name;
-    }
-    
+    /**
+     * Finds a scene within the project by name.
+     * @param findableName name of the scene to be found
+     * @return found scene
+     */
     public GameScene findScene(String findableName)
     {
         //TODO: make so that scenes cant have the same name
@@ -67,6 +72,10 @@ public class GameProject
         return findable;
     }
     
+    /**
+     * Adds a new scene to the project.
+     * @param scene the scene to be added
+     */
     public void addScene(GameScene scene)
     {
         this.scenes.add(scene);
