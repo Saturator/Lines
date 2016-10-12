@@ -70,7 +70,7 @@ public class Vector2Test
     public void rotationTest1()
     {
         Vector2 v = new Vector2(2f, 2f);
-        v.rotate(90);
+        v.rotate(90, new Vector2());
         Vector2 expectedResult = new Vector2(-2f, 2f);
         assertEquals(v.x, expectedResult.x, 0.01f);
         assertEquals(v.y, expectedResult.y, 0.01f);
@@ -80,7 +80,7 @@ public class Vector2Test
     public void rotationTest2()
     {
         Vector2 v = new Vector2(1f, 1f);
-        v.rotate(45);
+        v.rotate(45, new Vector2());
         Vector2 expectedResult = new Vector2(0f, 1.41f);
         assertEquals(v.x, expectedResult.x, 0.01f);
         assertEquals(v.y, expectedResult.y, 0.01f);
@@ -97,7 +97,7 @@ public class Vector2Test
         rect[3] = new Vector2(1f, -1f);
         for(Vector2 p : rect)
         {
-            p.rotate(45);
+            p.rotate(45, new Vector2());
         }
         assertEquals(rect[0].x, 0f, 0.01f);
         assertEquals(rect[0].y, 1.41, 0.01f);

@@ -9,6 +9,11 @@ public class Line
 {
     public Vector2[] points;
     
+    /**
+     * Creates a new line.
+     * @param p0 start point of the line
+     * @param p1 end point of the line
+     */
     public Line(Vector2 p0, Vector2 p1)
     {
         this.points = new Vector2[2];
@@ -42,8 +47,8 @@ public class Line
         normalized[1] = new Vector2(this.points[1].x - midpoint.x, this.points[1].y - midpoint.y);
         
         
-        normalized[0].rotate(angle);
-        normalized[1].rotate(angle);
+        normalized[0].rotate(angle, midpoint);
+        normalized[1].rotate(angle, midpoint);
         normalized[0].add(midpoint);
         normalized[1].add(midpoint);
         this.points[0] = normalized[0];

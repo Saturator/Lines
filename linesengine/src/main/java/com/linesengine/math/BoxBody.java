@@ -7,8 +7,7 @@ package com.linesengine.math;
 public class BoxBody extends PhysicsBody
 {
     public Vector2 tl, tr, br, bl; //top left, top right, bottom right, bottom left
-    protected float rotation;
-    
+    int i = 0;
     /*
 
      tl->*----------*<-tr
@@ -24,7 +23,9 @@ public class BoxBody extends PhysicsBody
         return new Vector2[] {tl, tr, br, bl, this.middle()};
     }
     
-    //create a box that is 1x1 by default
+    /**
+     * Creates a new bod body object that is 1*1 by default.
+     */
     public BoxBody()
     {
         this.tl = new Vector2(-0.5f, -0.5f);
@@ -37,6 +38,10 @@ public class BoxBody extends PhysicsBody
         rotation = 0f;
     }
     
+    /**
+     * Creates a new box body.
+     * @param size size of the body from the center
+     */
     public BoxBody(float size)
     {
         this.tl = new Vector2(-0.5f * size, -0.5f * size);
@@ -77,14 +82,37 @@ public class BoxBody extends PhysicsBody
     {
         if(other instanceof CircleBody)
         {
-            return true;
+            return false;
         }
         else if(other instanceof BoxBody && isCollidingWithBox((BoxBody) other))
         {
-            System.out.println("hola");
+            resolveBoxCollision((BoxBody)other);
             return true;
         }
         return false;
+    }
+    
+    public void resolveBoxCollision(BoxBody other)
+    {   
+        Vector2 diffMiddle = new Vector2(other.middle().x - this.middle().x, other.middle().y - this.middle().y);
+            
+        Vector2 vel1 = this.velocity;
+        
+        vel1.multiply(0.6f);
+        other.velocity.add(vel1);
+        super.velocity.multiply(-0.6f);
+
+        //rotation
+        /*
+        Line colLine = new Line(new Vector2(0, 0), other.middle());
+        Vector2 collisionPt = colLine.getMidpoint();
+        super.rotation = collisionPt.x;
+        if(other.velocity.x != 0)
+        {
+            super.rotation = other.velocity.x;
+        }
+        super.rotation *= 0.1f;
+        */
     }
     
     public float[] getMinMax(BoxBody body, Vector2 direction)
@@ -113,7 +141,7 @@ public class BoxBody extends PhysicsBody
     /**
      * Checks whether this specific box is colliding with another specific box.
      * @param other
-     * @return 
+     * @return is the box colliding or not
      */
     public boolean isCollidingWithBox(BoxBody other)
     {   
@@ -143,7 +171,13 @@ public class BoxBody extends PhysicsBody
      */
     public Vector2 middle()
     {
-        return new Vector2((tr.x + tl.x) / 2, (tr.y + br.y) / 2);
+        Line line1 = new Line(tr, tl);
+        Line line2 = new Line(br, bl);
+        Vector2 mid1 = line1.getMidpoint();
+        Vector2 mid2 = line2.getMidpoint();
+        Line line3 = new Line(mid1, mid2);
+        Vector2 middle = line3.getMidpoint();
+        return middle;
     }
     
     /**
@@ -171,35 +205,15 @@ public class BoxBody extends PhysicsBody
      * Rotates the box.
      * @param angle the amount of rotation as an angle
      */
+    @Override
     public void rotate(float angle)
     {           
         //these call the vector2 rotation func, not this one
-        this.tl.rotate(angle);
-        this.tr.rotate(angle);
-        this.br.rotate(angle);
-        this.bl.rotate(angle);
-        
-        //changes the places of top left dots, etc as the box spins
-        //because as the box spins, the top left and all others also change
-        //we change them as many times as the box has been rotated a full 90 degrees
-        for(float i = this.rotation; i <= angle+this.rotation; i += 90)
-        {
-            Vector2 oldTl = this.tl;
-            this.tl = this.tr;
-            this.tr = this.br;
-            this.br = this.bl;
-            this.bl = oldTl;
-        }
-        
-        //put rotation to 0 every time the box has rotated fully
-        if(this.rotation < 360f)
-        {
-            this.rotation += angle;   
-        }
-        else
-        {
-            this.rotation = angle - 360f;
-        }
+        Vector2 mid = this.middle();
+        this.tl.rotate(angle, mid);
+        this.tr.rotate(angle, mid);
+        this.br.rotate(angle, mid);
+        this.bl.rotate(angle, mid);
     }
     
     @Override

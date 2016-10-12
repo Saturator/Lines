@@ -8,18 +8,30 @@ public class Vector2
 {
     public float x, y;
     
+    /**
+     * Create a vector at zero.
+     */
     public Vector2()
     {
         this.x = 0f;
         this.y = 0f;
     }
     
+    /**
+     * Create a new 2D vector.
+     * @param x horizontal amount
+     * @param y vertical amount
+     */
     public Vector2(float x, float y)
     {
         this.x = x;
         this.y = y;
     }
     
+    /**
+     * Create a vector from another vector.
+     * @param v vector to be created from
+     */
     public Vector2(Vector2 v)
     {
         v.x = x;
@@ -86,31 +98,24 @@ public class Vector2
     /**
      * Rotates this vector.
      * @param angle the amount to rotate by
+     * @param pivot the point to be rotated around
      */
-    public void rotate(float angle)
+    public void rotate(float angle, Vector2 pivot)
     {
+        Vector2 p = new Vector2(this.x, this.y);
         //rotation matrix is used here
         //maybe a matrix math class separately? is it needed?
-        double rotatedX =
-        this.x * Math.cos(Math.toRadians(angle)) - this.y * Math.sin(Math.toRadians(angle));
+        double s = (float) Math.sin(Math.toRadians(angle));
+        double c = (float) Math.cos(Math.toRadians(angle));
         
-        double rotatedY = 
-        this.x * Math.sin(Math.toRadians(angle)) + this.y * Math.cos(Math.toRadians(angle));
+        p.x -= pivot.x;
+        p.y -= pivot.y;
         
-        this.x = (float) rotatedX;
-        this.y = (float) rotatedY;
-    }
-    
-    public void rotate(float angle, Vector2 center)
-    {
-        double rotatedX =
-        this.x * Math.cos(Math.toRadians(angle)) - this.y * Math.sin(Math.toRadians(angle));
+        double xNew = p.x * c - p.y * s;
+        double yNew = p.x * s + p.y * c;
         
-        double rotatedY = 
-        this.x * Math.sin(Math.toRadians(angle)) + this.y * Math.cos(Math.toRadians(angle));
-        
-        this.x = (float) rotatedX;
-        this.y = (float) rotatedY;
+        this.x = (float) xNew + pivot.x;
+        this.y = (float) yNew + pivot.y;
     }
     
     @Override

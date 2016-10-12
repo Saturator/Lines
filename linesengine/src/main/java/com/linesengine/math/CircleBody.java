@@ -16,6 +16,10 @@ public class CircleBody extends PhysicsBody
         this.position = new Vector2(0f, 0f);
     }
     
+    /**
+     * Creates a new circle body.
+     * @param radius
+     */
     public CircleBody(float radius)
     {
         this.radius = radius;
@@ -39,6 +43,12 @@ public class CircleBody extends PhysicsBody
     {
         this.position.add(movement);
     }  
+    
+    @Override
+    public void rotate(float angle)
+    {
+        //TODO
+    }
     
     @Override
     public boolean isColliding(Collidable other)

@@ -18,6 +18,8 @@ public abstract class PhysicsBody implements Collidable
     public float mass;
     public float friction;
     public float gravity;
+    
+    public float rotation;
     //you can add gravity by adding small a down vector 
     //that is applied on every timestep
     
@@ -30,6 +32,10 @@ public abstract class PhysicsBody implements Collidable
         this.friction = 0.02f;
     }
     
+    /**
+     * Create a new physics body.
+     * @param friction
+     */
     public PhysicsBody(float friction)
     {
         //friction cannot be bigger than 100% (1.00f)
@@ -51,6 +57,12 @@ public abstract class PhysicsBody implements Collidable
     @Override
     public abstract boolean isColliding(Collidable other);
     
+    public abstract void rotate(float angle);
+    
+    /**
+     * Get the speed of the object as a scalar.
+     * @return length of the velocity vector
+     */
     public float speed()
     {
         //just the length of the velocity vector
@@ -67,6 +79,10 @@ public abstract class PhysicsBody implements Collidable
         this.velocity = v;
     }
     
+    /**
+     * Add to the body's velocity.
+     * @param v velocity to be added
+     */
     public void addToVelocity(Vector2 v)
     {
         this.velocity.add(v);
@@ -99,6 +115,7 @@ public abstract class PhysicsBody implements Collidable
         if(this.velocity.length() > 0f)
         {
             this.velocity.multiply((1f - friction));
+            this.rotation *= 1f - friction;
             
             //stop the object if velocity is really really slow?
             //instead of just multiplying to infinity

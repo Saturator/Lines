@@ -18,17 +18,29 @@ public class GameScene
     {
         this.name = name;
     }
-
+    
+    /**
+     * Gets all game objects within the scene-
+     * @return 
+     */
     public ArrayList<GameObject> getAllObjects()
     {
         return this.sceneObjects;
     }
     
+    /**
+     * Adds a game object to the scene.
+     * @param go game object to be added
+     */
     public void addGameObject(GameObject go)
     {
         this.sceneObjects.add(go);
     }
     
+    /**
+     * Removes a specific game object from the scene.
+     * @param go game object to be removed
+     */
     public void removeGameObject(GameObject go)
     {
         this.sceneObjects.remove(go);

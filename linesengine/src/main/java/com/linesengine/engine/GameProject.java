@@ -20,6 +20,11 @@ public class GameProject
         this.scenes = new ArrayList<>();
     }
     
+    /**
+     * Creates a new project.
+     * @param name name of the project
+     * @param game game to be linked to the project
+     */
     public GameProject(String name, Game game)
     {
         this.name = name;

@@ -12,10 +12,14 @@ import javax.swing.*;
 public class GameWindow extends Canvas
 {   
     public String title;
-    public static final int WIDTH = 600;
+    public static final int WIDTH = 1000;
     public static final int HEIGHT = WIDTH / 12 * 9;
 
-    
+    /**
+     * Creates a new game window.
+     * @param title title of the window
+     * @param project game project to be linked to the window
+     */
     //TODO: add some mutator methods
     public GameWindow(String title, GameProject project)
     {
