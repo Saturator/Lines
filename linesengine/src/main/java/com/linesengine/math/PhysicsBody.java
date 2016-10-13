@@ -20,6 +20,7 @@ public abstract class PhysicsBody implements Collidable
     public float gravity;
     
     public float rotation;
+    public boolean hasRotated;
     //you can add gravity by adding small a down vector 
     //that is applied on every timestep
     
@@ -115,7 +116,7 @@ public abstract class PhysicsBody implements Collidable
         if(this.velocity.length() > 0f)
         {
             this.velocity.multiply((1f - friction));
-            this.rotation *= 1f - friction;
+            this.rotation *= 0.95f;
             
             //stop the object if velocity is really really slow?
             //instead of just multiplying to infinity

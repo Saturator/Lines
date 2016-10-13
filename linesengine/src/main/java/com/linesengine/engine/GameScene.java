@@ -117,6 +117,10 @@ public class GameScene
         //otherwise jump out of the nested loop right away
         
         boolean[] hasCollided = new boolean[sceneObjects.size()];
+        for(GameObject go : sceneObjects)
+        {
+            go.physicsBody.hasRotated = false;
+        }
         for (int i = 0; i < sceneObjects.size(); i++)
         {
             for (int j = 0; j < sceneObjects.size(); j++)

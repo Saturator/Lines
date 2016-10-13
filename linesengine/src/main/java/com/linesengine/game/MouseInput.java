@@ -52,7 +52,7 @@ public class MouseInput extends MouseAdapter
         start = new Vector2(start.x, start.y);
         BoxBody body = new BoxBody(size);
         body.move(start);
-        body.rotate(i);
+        //body.rotate(i);
         Vector2 diff = new Vector2(end.x - start.x, end.y - start.y);
         diff.multiply(0.1f);
         body.setVelocity(diff);

@@ -93,26 +93,38 @@ public class BoxBody extends PhysicsBody
     }
     
     public void resolveBoxCollision(BoxBody other)
-    {   
-        Vector2 diffMiddle = new Vector2(other.middle().x - this.middle().x, other.middle().y - this.middle().y);
-            
+    {               
         Vector2 vel1 = this.velocity;
+        //this.velocity.multiply(0.8f);
         
         vel1.multiply(0.6f);
         other.velocity.add(vel1);
-        super.velocity.multiply(-0.6f);
-
-        //rotation
-        /*
-        Line colLine = new Line(new Vector2(0, 0), other.middle());
-        Vector2 collisionPt = colLine.getMidpoint();
-        super.rotation = collisionPt.x;
-        if(other.velocity.x != 0)
+        super.velocity.multiply(0.2f);
+        
+        physicsRotation(other);
+    }
+    
+    public void physicsRotation(BoxBody other)
+    {
+        if(!super.hasRotated)
         {
-            super.rotation = other.velocity.x;
+            Vector2 diffMiddle = new Vector2(other.middle().x - this.middle().x, other.middle().y - this.middle().y);
+            Vector2 otherDiff = new Vector2(other.velocity.x, other.velocity.y);
+            otherDiff.add(diffMiddle);
+            float rotAmt = otherDiff.x - diffMiddle.x;
+            if(diffMiddle.y < 0f)
+            {
+                super.rotation = 0.25f * rotAmt;
+                other.rotation = 0.25f * rotAmt;
+            }
+            else
+            {
+                super.rotation = -0.25f * rotAmt;
+                other.rotation = -0.25f * rotAmt;
+            }
+            super.hasRotated = true;
+            other.hasRotated = true;
         }
-        super.rotation *= 0.1f;
-        */
     }
     
     public float[] getMinMax(BoxBody body, Vector2 direction)
