@@ -114,8 +114,9 @@ public class BoxBody extends PhysicsBody
             float rotAmt = otherDiff.x - diffMiddle.x;
             if(diffMiddle.y < 0f)
             {
-                super.rotation = 0.25f * rotAmt;
-                other.rotation = 0.25f * rotAmt;
+                System.out.println("ha!!");
+                super.rotation = 0.75f * rotAmt;
+                other.rotation = 0.75f * rotAmt;
             }
             else
             {
