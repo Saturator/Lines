@@ -6,6 +6,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.image.*;
 import java.awt.Graphics;
+import java.awt.Toolkit;
 
 
 //tämä classi ei ole täysin omatekemä, apua täältä:
@@ -14,9 +15,10 @@ import java.awt.Graphics;
 
 //pistä pit testit ja checkstylet tänne
 //https://htmlpreview.github.io
-public class Game extends Canvas implements Runnable
+public class Game implements Runnable
 {
     GameProject project;
+    GameWindow window;
     
     private Thread thread;
     private boolean running = false;
@@ -25,9 +27,8 @@ public class Game extends Canvas implements Runnable
     {
         this.project = new GameProject(projectName, this);
         this.project.addScene(new GameScene("test"));
-        this.project.createWindow();
-        this.addKeyListener(new KeyInput());
-        this.addMouseListener(new MouseInput(this.project));
+        this.window = new GameWindow("test", this.project);
+        this.start();
     }
     
     public static void main(String[] args)
@@ -103,19 +104,7 @@ public class Game extends Canvas implements Runnable
     }
     
     private void render()
-    {
-        BufferStrategy bs = this.getBufferStrategy();
-        if(bs == null)
-        {
-            this.createBufferStrategy(2);
-            return;
-        }
-        
-        Graphics g = bs.getDrawGraphics();
-        g.setColor(Color.black);
-        g.fillRect(0, 0, 1000, 1000);
-        this.project.getScene(0).render(g);
-        g.dispose();
-        bs.show();
+    {        
+        this.window.repaint();
     }
 }

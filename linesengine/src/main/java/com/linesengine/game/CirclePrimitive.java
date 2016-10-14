@@ -41,9 +41,9 @@ public class CirclePrimitive extends GameObject
     public void render(Graphics g)
     {
         g.setColor(this.color);
-        g.setFont(new Font("Courier", Font.PLAIN, 8));
+        //g.setFont(new Font("Courier", Font.PLAIN, 8));
         Vector2 pos = this.physicsBody.getPosition();
-        g.fillOval((int)pos.x, (int)pos.y, (int) radius, (int) radius);
-        g.drawString(pos + "", (int)pos.x - 25, (int)pos.y - 5);
-    }    
+        g.drawOval((int)pos.x, (int)pos.y, (int) radius, (int) radius);
+        //g.drawString(pos + "", (int)pos.x - 25, (int)pos.y - 5);
+    }
 }

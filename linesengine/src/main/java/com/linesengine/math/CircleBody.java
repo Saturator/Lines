@@ -74,10 +74,10 @@ public class CircleBody extends PhysicsBody
     {
         if(other.equals(this)) return false;
         
-        float betweenLength = 
+        float distance = 
         new Vector2(other.position.x - this.position.x, other.position.y - this.position.y).length();
 
-        return (betweenLength - (this.radius + other.radius)) <= 0f;
+        return distance <= other.radius + this.radius;
     }
     
     //think if this should return a vector or just add to the overclass right away

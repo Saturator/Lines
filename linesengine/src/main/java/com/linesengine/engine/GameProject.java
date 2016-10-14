@@ -11,7 +11,6 @@ public class GameProject
 {
     protected String name;
     protected ArrayList<GameScene> scenes;
-    public GameWindow window;
     protected Game game;
     
     public GameProject(String name)
@@ -40,22 +39,6 @@ public class GameProject
     public String getName()
     {
         return this.name;
-    }
-    
-    /**
-     * Creates a window for the specific project. 
-     */
-    public void createWindow()
-    {
-        if(this.game != null)
-        {
-            this.window = new GameWindow(this.name, this);
-        }
-        else
-        {
-            //TODO: make this an actual exception
-            System.out.println("You must add a game!");
-        }
     }
     
     /**

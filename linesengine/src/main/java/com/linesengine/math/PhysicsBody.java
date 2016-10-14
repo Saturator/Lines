@@ -21,6 +21,7 @@ public abstract class PhysicsBody implements Collidable
     
     public float rotation;
     public boolean hasRotated;
+    public boolean hasCollided;
     //you can add gravity by adding small a down vector 
     //that is applied on every timestep
     

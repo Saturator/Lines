@@ -11,8 +11,8 @@ public class GameWindowTest
     {
         Game g = new Game("game");
         GameProject p = new GameProject("p", g);
-        p.createWindow();
-        System.out.println(p.window);
-        assertEquals(p.window.title, "p");
+        GameWindow w = new GameWindow("w", p);
+        System.out.println(w);
+        assertEquals(w.title, "w");
     }
 }

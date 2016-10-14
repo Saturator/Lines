@@ -66,6 +66,11 @@ public class GameScene
         return findable;
     }
     
+    public void clearAllObjects()
+    {
+        this.sceneObjects.clear();
+    }
+    
     /**
      * Simulates one physics tick within the whole scene.
      */

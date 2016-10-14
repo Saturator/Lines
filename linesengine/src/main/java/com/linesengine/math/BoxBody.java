@@ -18,6 +18,7 @@ public class BoxBody extends PhysicsBody
     
     */
     
+    @Override
     public Vector2[] getPts()
     {
         return new Vector2[] {tl, tr, br, bl, this.middle()};
@@ -93,15 +94,17 @@ public class BoxBody extends PhysicsBody
     }
     
     public void resolveBoxCollision(BoxBody other)
-    {               
+    {            
         Vector2 vel1 = this.velocity;
         //this.velocity.multiply(0.8f);
-        
+
         vel1.multiply(0.6f);
         other.velocity.add(vel1);
         super.velocity.multiply(0.2f);
-        
+
         physicsRotation(other);
+            
+        super.hasCollided = true;
     }
     
     public void physicsRotation(BoxBody other)
@@ -114,7 +117,6 @@ public class BoxBody extends PhysicsBody
             float rotAmt = otherDiff.x - diffMiddle.x;
             if(diffMiddle.y < 0f)
             {
-                System.out.println("ha!!");
                 super.rotation = 0.75f * rotAmt;
                 other.rotation = 0.75f * rotAmt;
             }
