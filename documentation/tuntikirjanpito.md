@@ -11,3 +11,5 @@ Päivä | Tunnit | Kuvaus
 30.09.2016 | 4h | GUI, palleroja liikkellä, paremman prediktiivisen collision s$
 06.10.2016 | 5h | Palleroja pystyy ampumaan nyt ja ne kimpoilevat, peliluupin säätöä sekä pyörivien objektien alustusta
 07.10.2016 | 8h | Uuden collision mekaniikan suunnittelu ja metodien luomista, paljon matikkaa, vähän koodia
+13.10.2016 | 5h | Graffanpiirtorakenteen korjailua, neliöiden pyöriminen
+14.10.2016 | 6h | Rakenteen korjailua, suorituskyvyn optimointia, kirjoitteula

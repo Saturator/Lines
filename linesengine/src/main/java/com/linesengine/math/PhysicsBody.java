@@ -71,11 +71,19 @@ public abstract class PhysicsBody implements Collidable
         return velocity.length();
     }
     
+    /**
+     * Get the velocity vector of the object.
+     * @return velocity
+     */
     public Vector2 getVelocity()
     {
         return this.velocity;
     }
     
+    /**
+     * Set the velocity vector of the object.
+     * @param velocity to be set
+     */
     public void setVelocity(Vector2 v)
     {
         this.velocity = v;

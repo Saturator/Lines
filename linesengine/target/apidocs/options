@@ -1,0 +1,24 @@
+-classpath
+'/Users/ematias/.m2/repository/org/jogamp/gluegen/gluegen-rt/2.3.1/gluegen-rt-2.3.1-natives-linux-amd64.jar:/Users/ematias/.m2/repository/org/jogamp/gluegen/gluegen-rt-main/2.3.1/gluegen-rt-main-2.3.1.jar:/Users/ematias/.m2/repository/org/jogamp/gluegen/gluegen-rt/2.3.1/gluegen-rt-2.3.1-natives-windows-i586.jar:/Users/ematias/.m2/repository/org/jogamp/gluegen/gluegen-rt/2.3.1/gluegen-rt-2.3.1-natives-macosx-universal.jar:/Users/ematias/.m2/repository/org/jogamp/jogl/jogl-all/2.3.1/jogl-all-2.3.1-natives-android-aarch64.jar:/Users/ematias/.m2/repository/org/jogamp/gluegen/gluegen-rt/2.3.1/gluegen-rt-2.3.1.jar:/Users/ematias/.m2/repository/org/jogamp/jogl/jogl-all/2.3.1/jogl-all-2.3.1-natives-linux-i586.jar:/Users/ematias/.m2/repository/org/jogamp/jogl/jogl-all/2.3.1/jogl-all-2.3.1.jar:/Users/ematias/.m2/repository/org/jogamp/jogl/jogl-all/2.3.1/jogl-all-2.3.1-natives-android-armv6.jar:/Users/ematias/.m2/repository/org/jogamp/jogl/jogl-all-main/2.3.1/jogl-all-main-2.3.1.jar:/Users/ematias/.m2/repository/org/jogamp/gluegen/gluegen-rt/2.3.1/gluegen-rt-2.3.1-natives-windows-amd64.jar:/Users/ematias/.m2/repository/org/jogamp/jogl/jogl-all/2.3.1/jogl-all-2.3.1-natives-solaris-amd64.jar:/Users/ematias/.m2/repository/org/jogamp/jogl/jogl-all/2.3.1/jogl-all-2.3.1-natives-macosx-universal.jar:/Users/ematias/.m2/repository/org/jogamp/jogl/jogl-all/2.3.1/jogl-all-2.3.1-natives-solaris-i586.jar:/Users/ematias/.m2/repository/org/jogamp/gluegen/gluegen-rt/2.3.1/gluegen-rt-2.3.1-natives-linux-armv6.jar:/Users/ematias/.m2/repository/org/jogamp/jogl/jogl-all/2.3.1/jogl-all-2.3.1-natives-linux-armv6hf.jar:/Users/ematias/.m2/repository/org/jogamp/gluegen/gluegen-rt/2.3.1/gluegen-rt-2.3.1-natives-android-armv6.jar:/Users/ematias/.m2/repository/org/jogamp/jogl/jogl-all/2.3.1/jogl-all-2.3.1-natives-windows-i586.jar:/Users/ematias/.m2/repository/org/jogamp/gluegen/gluegen-rt/2.3.1/gluegen-rt-2.3.1-natives-android-aarch64.jar:/Users/ematias/.m2/repository/org/jogamp/jogl/jogl-all/2.3.1/jogl-all-2.3.1-natives-linux-amd64.jar:/Users/ematias/.m2/repository/org/jogamp/gluegen/gluegen-rt/2.3.1/gluegen-rt-2.3.1-natives-solaris-i586.jar:/Users/ematias/.m2/repository/org/jogamp/gluegen/gluegen-rt/2.3.1/gluegen-rt-2.3.1-natives-linux-i586.jar:/Users/ematias/.m2/repository/org/jogamp/jogl/jogl-all/2.3.1/jogl-all-2.3.1-natives-linux-armv6.jar:/Users/ematias/.m2/repository/org/jogamp/gluegen/gluegen-rt/2.3.1/gluegen-rt-2.3.1-natives-linux-armv6hf.jar:/Users/ematias/.m2/repository/org/jogamp/jogl/jogl-all/2.3.1/jogl-all-2.3.1-natives-windows-amd64.jar:/Users/ematias/.m2/repository/org/jogamp/gluegen/gluegen-rt/2.3.1/gluegen-rt-2.3.1-natives-solaris-amd64.jar'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'/Users/ematias/newlines/lines/linesengine/src/main/java:/Users/ematias/newlines/lines/linesengine/target/generated-sources/annotations'
+-author
+-bottom
+'Copyright &#169; 2016. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/Users/ematias/newlines/lines/linesengine/target/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'linesengine 0.7 API'
+-linkoffline
+'http://docs.oracle.com/javase/8/docs/api' '/Users/ematias/newlines/lines/linesengine/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'linesengine 0.7 API'

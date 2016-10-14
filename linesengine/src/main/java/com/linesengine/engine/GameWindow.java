@@ -27,7 +27,7 @@ public class GameWindow extends JPanel
     private GameProject project;
     private boolean circles;
     private int size = 50;
-    int test = 0;
+    public int FPS = 0;
     /**
      * Creates a new game window.
      * @param title title of the window
@@ -76,14 +76,11 @@ public class GameWindow extends JPanel
     @Override
     protected void paintComponent(Graphics g)
     {
-        //System.out.println("painting");
         super.paintComponent(g);
         g.setColor(Color.black);
         g.fillRect(0, 0, 1000, 1000);
         if(pressEvent != null)
         {
-            //g.setColor(Color.white);
-            //g.fillRect(pressEvent.getX() - 50, pressEvent.getY() - 50, 100, 100);
             this.start = new Vector2(pressEvent.getX(), pressEvent.getY());
         }
         if(relEvent != null && relEvent != lastRel)
@@ -102,7 +99,6 @@ public class GameWindow extends JPanel
             }
             else
             {
-                System.out.println("went to else");
                 end = new Vector2(relEvent.getX(), relEvent.getY());
                 start = new Vector2(start.x, start.y);
                 BoxBody body = new BoxBody(size);
@@ -123,7 +119,6 @@ public class GameWindow extends JPanel
             if(keyPress.getKeyChar() == 'd') size += 5;
             keyPress = null;
         }
-            
         
         this.project.getScene(0).render(g);
         g.dispose();
