@@ -27,6 +27,7 @@ public class GameWindow extends JPanel
     private GameProject project;
     private boolean circles;
     private int size = 50;
+    int test = 0;
     /**
      * Creates a new game window.
      * @param title title of the window
@@ -101,6 +102,7 @@ public class GameWindow extends JPanel
             }
             else
             {
+                System.out.println("went to else");
                 end = new Vector2(relEvent.getX(), relEvent.getY());
                 start = new Vector2(start.x, start.y);
                 BoxBody body = new BoxBody(size);

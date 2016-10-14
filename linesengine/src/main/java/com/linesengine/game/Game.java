@@ -28,7 +28,9 @@ public class Game implements Runnable
         this.project = new GameProject(projectName, this);
         this.project.addScene(new GameScene("test"));
         this.window = new GameWindow("test", this.project);
-        this.start();
+        //this.start();
+        this.running = true;
+        run();
     }
     
     public static void main(String[] args)
@@ -59,6 +61,7 @@ public class Game implements Runnable
     //TODO: move this to a GameTime class
     public void run()
     {
+        int i = 0;
         //float amountOfTicks = 60f;
         //float ns = 1000000000 / amountOfTicks;
         float delta = 0f;
@@ -74,11 +77,10 @@ public class Game implements Runnable
             
             while(delta >= 10)
             {
+                render();
                 tick();
                 delta -= 10;   
             }
-
-            render();
             
             frames++;
             
@@ -93,7 +95,7 @@ public class Game implements Runnable
             }
             */
         }
-        stop();
+        //stop();
     }
     
     private void tick()
