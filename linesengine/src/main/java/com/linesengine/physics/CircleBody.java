@@ -116,7 +116,7 @@ public class CircleBody extends PhysicsBody
         Vector2 vel1 = this.velocity;
         vel1.multiply(0.5f);
         other.velocity.add(vel1);
-        super.velocity.multiply(0.3f);
+        super.velocity.multiply(-0.3f);
         other.physicsRotation(this);
         super.hasCollided = true;
     }

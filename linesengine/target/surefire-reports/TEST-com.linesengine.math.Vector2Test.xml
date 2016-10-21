@@ -62,11 +62,11 @@
   </properties>
   <testcase classname="com.linesengine.math.Vector2Test" name="multiplicationTest1" time="0"/>
   <testcase classname="com.linesengine.math.Vector2Test" name="normalizeTest1" time="0"/>
-  <testcase classname="com.linesengine.math.Vector2Test" name="normalizeTest2" time="0.001"/>
+  <testcase classname="com.linesengine.math.Vector2Test" name="normalizeTest2" time="0"/>
   <testcase classname="com.linesengine.math.Vector2Test" name="rotationTest1" time="0"/>
   <testcase classname="com.linesengine.math.Vector2Test" name="rotationTest2" time="0"/>
   <testcase classname="com.linesengine.math.Vector2Test" name="rotationTest3" time="0"/>
   <testcase classname="com.linesengine.math.Vector2Test" name="additionTest1" time="0"/>
   <testcase classname="com.linesengine.math.Vector2Test" name="additionTest2" time="0"/>
-  <testcase classname="com.linesengine.math.Vector2Test" name="additionTest3" time="0"/>
+  <testcase classname="com.linesengine.math.Vector2Test" name="additionTest3" time="0.001"/>
 </testsuite>
