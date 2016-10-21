@@ -11,7 +11,7 @@ public class LineTest
         Vector2 p0 = new Vector2(1f, 1f);
         Vector2 p1 = new Vector2(3f, 3f);
         Line l1 = new Line(p0, p1);
-        l1.rotate(90);
+        l1.rotate(90, l1.getMidpoint());
         System.out.println(l1);
         Line expected = new Line(new Vector2(3f, 1f), new Vector2(1f, 3f));
         assertEquals(l1.points[0].x, expected.points[0].x, 0.01f);
@@ -26,7 +26,7 @@ public class LineTest
         Vector2 p0 = new Vector2(-100f, -100f);
         Vector2 p1 = new Vector2(-50f, -50f);
         Line l1 = new Line(p0, p1);
-        l1.rotate(90);
+        l1.rotate(90, l1.getMidpoint());
         Line expected = new Line(new Vector2(-50f, -100f), new Vector2(-100f, -50f));
         assertEquals(l1.points[0].x, expected.points[0].x, 0.01f);
         assertEquals(l1.points[0].y, expected.points[0].y, 0.01f);

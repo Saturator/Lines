@@ -13,3 +13,5 @@ Päivä | Tunnit | Kuvaus
 07.10.2016 | 8h | Uuden collision mekaniikan suunnittelu ja metodien luomista, paljon matikkaa, vähän koodia
 13.10.2016 | 5h | Graffanpiirtorakenteen korjailua, neliöiden pyöriminen
 14.10.2016 | 6h | Rakenteen korjailua, suorituskyvyn optimointia, kirjoitteula
+20.10.2016 | 5h | Fysiikkaa, pallot vs boksit
+21.10.2016 | 6h | Pallot vs boksit, rakennetta, javadocseja

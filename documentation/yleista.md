@@ -16,7 +16,7 @@ Tuo htmlpreview sivusto ei jostain syystä toiminut kun yritin nuo uudet testit 
 * Uusein objektien luominen ja niillä leikittely
 * Pelimoottoriominaisuudet kuten peliobjektit, projektit ja scenet
     
-**Alustava luokkakaavio:**<br/>
-![Luokkakaavio](http://i.imgur.com/IKfvOEk.png “Luokkakaavio")
+**Rakennekaavioita:**<br/>
+![Luokkakaavio](http://i.imgur.com/uMGyYXy.png “Luokkakaavio")
 ![Sekvenssikaavio1](http://i.imgur.com/JdiiCMO.png "Sekvenssi1")
 ![Sekvenssikaavio2](http://i.imgur.com/zUOpzWl.png "Sekvenssi2")

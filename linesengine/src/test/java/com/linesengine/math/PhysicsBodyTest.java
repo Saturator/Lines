@@ -1,5 +1,8 @@
 package com.linesengine.math;
 
+import com.linesengine.physics.PhysicsBody;
+import com.linesengine.physics.CircleBody;
+import com.linesengine.physics.BoxBody;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

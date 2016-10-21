@@ -1,13 +1,12 @@
 package com.linesengine.engine;
 
-import com.linesengine.math.PhysicsBody;
+import com.linesengine.physics.PhysicsBody;
 import java.awt.Graphics;
 import java.awt.Color;
 
 /**
  * GameObject is a parent class for any object that is within our GameScene.
  */
-
 public abstract class GameObject 
 {
     public String name;
@@ -33,7 +32,7 @@ public abstract class GameObject
     }
     
     /**
-     * Creates a game object.
+     * Creates a GameObject with a given PhysicsBody and Color.
      * @param body physics body linked to the object
      * @param c color of the game object
      */
@@ -44,12 +43,21 @@ public abstract class GameObject
         this.color = c;
     }
     
+    /**
+     * Creates an empty GameObject.
+     * @param c 
+     */
     public GameObject(Color c)
     {
         this.name = "";
         this.color = c;
     }
     
+    /**
+     * Creates an empty GameObject.
+     * @param name
+     * @param c 
+     */
     public GameObject(String name, Color c)
     {
         this.name = name;
@@ -78,6 +86,10 @@ public abstract class GameObject
         this.physicsBody = body;
     }
     
+    /**
+     * Gets the PhysicsBody linked to this specific GameObject.
+     * @return linked PhysicsBody
+     */
     public PhysicsBody getPhysicsBody()
     {
         return this.physicsBody;

@@ -36,23 +36,13 @@ public class Line
     }
     
     /**
-     * Rotates the line
-     * @param angle 
+     * Rotates the line around a given pivot point.
+     * @param angle amount of rotation
+     * @param pivot point to be rotated around
      */
-    public void rotate(float angle)
+    public void rotate(float angle, Vector2 pivot)
     {
-        Vector2 midpoint = this.getMidpoint();
-        Vector2[] normalized = new Vector2[2];
-        normalized[0] = new Vector2(this.points[0].x - midpoint.x, this.points[0].y - midpoint.y);
-        normalized[1] = new Vector2(this.points[1].x - midpoint.x, this.points[1].y - midpoint.y);
-        
-        
-        normalized[0].rotate(angle, midpoint);
-        normalized[1].rotate(angle, midpoint);
-        normalized[0].add(midpoint);
-        normalized[1].add(midpoint);
-        this.points[0] = normalized[0];
-        this.points[1] = normalized[1];
+        for(Vector2 p : this.points) p.rotate(angle, pivot);
     }
     
     @Override

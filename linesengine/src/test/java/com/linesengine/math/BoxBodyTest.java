@@ -1,5 +1,6 @@
 package com.linesengine.math;
 
+import com.linesengine.physics.*;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -73,8 +74,8 @@ public class BoxBodyTest
     {
         BoxBody b1 = new BoxBody(1f);
         b1.rotate(45);
-        Vector2 p1 = new Vector2(0.707f, 0);
-        Vector2 p2 = new Vector2(-0.707f, 0);
+        Vector2 p1 = new Vector2(0f, 0.707f);
+        Vector2 p2 = new Vector2(0f, -0.707f);
         assertEquals(b1.tr.x, p1.x, 0.01f);
         assertEquals(b1.tr.y, p1.y, 0.01f);
         assertEquals(b1.bl.x, p2.x, 0.01f);
@@ -84,33 +85,55 @@ public class BoxBodyTest
     @Test
     public void collisionTest1()
     {
-        BoxBody b1 = new BoxBody(1f);
-        b1.move(new Vector2(1.5f, 0.5f));
-        BoxBody b2 = new BoxBody(2.1f);
+        BoxBody b1 = new BoxBody(1.1f);
+        BoxBody b2 = new BoxBody(5f, new Vector2(50f, 0f));
+        b1.setVelocity(new Vector2(1f, 0f));
+        for(int i = 0; i < 47; i++) b1.move(b1.velocity);
         boolean isColliding = b1.isColliding(b2);
-        assertEquals(isColliding, true);
+        assertEquals(true, isColliding);
     }
     
-    //This fails! The problem is that the mechanism doesnt detect collisions
-    //from boxes that are completely inside the other box. You should fix that.
-    /*
     @Test
     public void collisionTest2()
     {
-        BoxBody b1 = new BoxBody(1f);
-        BoxBody b2 = new BoxBody(2.1f);
+        BoxBody b1 = new BoxBody(50f);
+        BoxBody b2 = new BoxBody(50f, new Vector2(0f, 980f));
+        b1.setVelocity(new Vector2(0f, 5f));
+        for(int i = 0; i < 1000/5; i++) b1.move(b1.velocity);
         boolean isColliding = b1.isColliding(b2);
-        assertEquals(isColliding, true);
+        assertEquals(true, isColliding);
     }
-    */
     
     @Test
     public void collisionTest3()
     {
-        BoxBody b1 = new BoxBody(2f);
-        BoxBody b2 = new BoxBody(2.1f);
-        b2.move(new Vector2(-1f, -0.5f));
+        BoxBody b1 = new BoxBody(50f);
+        BoxBody b2 = new BoxBody(50f, new Vector2(0f, 980f));
+        b1.setVelocity(new Vector2(0f, 5f));
+        for(int i = 0; i < 2000; i++) b1.move(b1.velocity);
         boolean isColliding = b1.isColliding(b2);
-        assertEquals(isColliding, true);
+        assertEquals(false, isColliding);
+    }
+    
+    @Test
+    public void collisionTest4()
+    {
+        BoxBody b1 = new BoxBody(50f);
+        CircleBody b2 = new CircleBody(50f, new Vector2(0f, 980f));
+        b1.setVelocity(new Vector2(0f, 5f));
+        for(int i = 0; i < 1000/5; i++) b1.move(b1.velocity);
+        boolean isColliding = b1.isColliding(b2);
+        assertEquals(true, isColliding);
+    }
+    
+    @Test
+    public void collisionTest5()
+    {
+        BoxBody b1 = new BoxBody(50f);
+        CircleBody b2 = new CircleBody(50f, new Vector2(0f, 980f));
+        b1.setVelocity(new Vector2(0f, 5f));
+        for(int i = 0; i < 1000; i++) b1.move(b1.velocity);
+        boolean isColliding = b1.isColliding(b2);
+        assertEquals(false, isColliding);
     }
 }

@@ -49,6 +49,16 @@ public class Vector2
     }
     
     /**
+     * Subtracts another vector to this vector.
+     * @param other 
+     */
+    public void subtract(Vector2 other)
+    {
+         this.x -= other.x;
+         this.y -= other.y;
+    }
+    
+    /**
      * Multiplies this vector by a float scalar.
      * @param multiplier 
      */
@@ -65,6 +75,15 @@ public class Vector2
     public float length()
     {
         return (float) Math.sqrt((this.x * this.x) + (this.y * this.y));
+    }
+    
+    /**
+     * Gives the distance from a to b.
+     * @return 
+     */
+    public static float distance(Vector2 a, Vector2 b)
+    {
+        return (float) Math.sqrt(((a.x-b.x) * (a.x-b.x)) + ((a.y-b.y) * (a.y-b.y)));
     }
     
     /**
@@ -96,7 +115,7 @@ public class Vector2
     }
     
     /**
-     * Rotates this vector.
+     * Rotates this vector and a pivot point.
      * @param angle the amount to rotate by
      * @param pivot the point to be rotated around
      */

@@ -2,21 +2,64 @@ package com.linesengine.engine;
 
 import java.util.ArrayList;
 import com.linesengine.game.Game;
+import java.awt.event.*;
 
 /**
  * GameProject class represents a single, whole game.
  */
 
-public class GameProject
+public class GameProject implements Runnable
 {
     protected String name;
-    protected ArrayList<GameScene> scenes;
+    public ArrayList<GameScene> scenes;
+    public GameWindow window;
     protected Game game;
     
+    public int frames = 0;
+    
+    /**
+     * Creates a new GameProject with a given name.
+     * Automatically creates a new GameWindow.
+     * @param name 
+     */
     public GameProject(String name)
     {
         this.name = name;
         this.scenes = new ArrayList<>();
+        this.window = new GameWindow(name, this);
+    }
+    
+    /**
+     * The main game loop. Runs within a fixed time step through measuring delta time.
+     */
+    @Override
+    public void run()
+    {
+        float delta = 0f;
+        long currentTime = System.currentTimeMillis();
+        long lastTime = currentTime;
+        
+        while(true)
+        {
+            long now = System.currentTimeMillis();
+            delta += now - lastTime;
+            lastTime = now;
+            
+            while(delta >= 12)
+            {
+                this.getScene(0).tick();
+                this.window.repaint();
+                this.frames++;
+                delta -= 12;  
+            }
+            
+            if(System.currentTimeMillis() - currentTime > 1000)
+            {
+                System.out.println("FPS: " + this.frames);
+                currentTime += 1000;
+                this.frames = 0;
+            }
+        }
     }
     
     /**
@@ -61,6 +104,26 @@ public class GameProject
     }
     
     /**
+     * Adds a MouseListener to the project.
+     * The linked MouseListener should be added from the game's logic side.
+     * @param input any given class that implements the MouseListener interface
+     */
+    public void setMouseInput(MouseListener input)
+    {
+        this.window.addMouseListener(input);
+    }
+    
+    /**
+     * Adds a KeyListener to the project.
+     * The linked KeyListener should be added from the game's logic side.
+     * @param input any given class that implements the KeyListener interface
+     */
+    public void setKeyInput(KeyListener input)
+    {
+        this.window.addKeyListener(input);
+    }
+    
+    /**
      * Adds a new scene to the project.
      * @param scene the scene to be added
      */
@@ -69,6 +132,11 @@ public class GameProject
         this.scenes.add(scene);
     }
     
+    /**
+     * Gets a scene by its index.
+     * @param i index of the scene
+     * @return 
+     */
     public GameScene getScene(int i)
     {
         return this.scenes.get(i);

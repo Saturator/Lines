@@ -1,5 +1,6 @@
 package com.linesengine.engine;
 
+import com.linesengine.physics.PhysicsBody;
 import java.util.ArrayList;
 import com.linesengine.math.*;
 import java.awt.Graphics;
@@ -14,6 +15,10 @@ public class GameScene
     protected String name;
     protected ArrayList<GameObject> sceneObjects = new ArrayList<>();
 
+    /**
+     * Creates an empty GameScene with a given name.
+     * @param name 
+     */
     public GameScene(String name)
     {
         this.name = name;
@@ -46,7 +51,7 @@ public class GameScene
         this.sceneObjects.remove(go);
     }
 
-    //right now you CANT find two objects if they have the same name,
+    //right now you cant find two objects if they have the same name,
     //so you better make a thing for that
     /**
      * Finds a specific game object by its name.
@@ -73,6 +78,7 @@ public class GameScene
     
     /**
      * Simulates one physics tick within the whole scene.
+     * Advances the physics simulation by one.
      */
     public void tick()
     {

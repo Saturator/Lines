@@ -1,6 +1,6 @@
 package com.linesengine.engine;
 
-import com.linesengine.game.CirclePrimitive;
+import com.linesengine.game.Circle;
 import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -19,7 +19,7 @@ public class GameSceneTest
     public void objectAddTest1()
     {
         GameScene s1 = new GameScene("testS");
-        GameObject go1 = new CirclePrimitive("gogo");
+        GameObject go1 = new Circle("gogo");
         s1.addGameObject(go1);
         GameObject foundObj = s1.findGameObject("gogo");
         assertEquals(foundObj.name, go1.name);
@@ -35,10 +35,10 @@ public class GameSceneTest
     public void objectAddTest2()
     {
         GameScene s1 = new GameScene("testS");
-        GameObject go1 = new CirclePrimitive("t1");
-        GameObject go2 = new CirclePrimitive("t2");
-        GameObject go3 = new CirclePrimitive("t3");
-        GameObject go4 = new CirclePrimitive("t4");
+        GameObject go1 = new Circle("t1");
+        GameObject go2 = new Circle("t2");
+        GameObject go3 = new Circle("t3");
+        GameObject go4 = new Circle("t4");
         s1.addGameObject(go1);
         s1.addGameObject(go2);
         s1.addGameObject(go3);
@@ -57,8 +57,7 @@ public class GameSceneTest
     public void objectMoveTest1()
     {
         GameScene s1 = new GameScene("testS");
-        PhysicsBody body = new CircleBody();
-        GameObject go1 = new CirclePrimitive("gogo", body);
+        GameObject go1 = new Circle(50f, new Vector2());
         go1.physicsBody.setVelocity(new Vector2(10f, 0f));
         s1.addGameObject(go1);
         s1.moveAllObjects();
@@ -71,12 +70,9 @@ public class GameSceneTest
     public void objectMoveTest2()
     {
         GameScene s1 = new GameScene("testS");
-        PhysicsBody body1 = new CircleBody();
-        PhysicsBody body2 = new CircleBody();
-        PhysicsBody body3 = new CircleBody();
-        GameObject go1 = new CirclePrimitive("gogo1", body1);
-        GameObject go2 = new CirclePrimitive("gogo2", body2);
-        GameObject go3 = new CirclePrimitive("gogo3", body3);
+        GameObject go1 = new Circle(50f, new Vector2());
+        GameObject go2 = new Circle(50f, new Vector2());
+        GameObject go3 = new Circle(50f, new Vector2());
         go1.physicsBody.setVelocity(new Vector2(100f, 0f));
         go2.physicsBody.setVelocity(new Vector2(-10f, 0f));
         go3.physicsBody.setVelocity(new Vector2(-10f, 10f));
@@ -99,8 +95,7 @@ public class GameSceneTest
     public void objectMoveTest3()
     {
         GameScene s1 = new GameScene("testS");
-        PhysicsBody body = new CircleBody();
-        GameObject go1 = new CirclePrimitive("gogo", body);
+        GameObject go1 = new Circle(50f, new Vector2());
         go1.physicsBody.setVelocity(new Vector2(10f, 10f));
         s1.addGameObject(go1);
         //lets run it for 30 ticks
