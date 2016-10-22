@@ -15,3 +15,4 @@ Päivä | Tunnit | Kuvaus
 14.10.2016 | 6h | Rakenteen korjailua, suorituskyvyn optimointia, kirjoitteula
 20.10.2016 | 5h | Fysiikkaa, pallot vs boksit
 21.10.2016 | 6h | Pallot vs boksit, rakennetta, javadocseja
+22.10.2016 | 5h | Pallot vs boksit, pientä loppusäätöä
