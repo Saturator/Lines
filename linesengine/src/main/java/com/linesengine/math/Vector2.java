@@ -122,8 +122,6 @@ public class Vector2
     public void rotate(float angle, Vector2 pivot)
     {
         Vector2 p = new Vector2(this.x, this.y);
-        //rotation matrix is used here
-        //maybe a matrix math class separately? is it needed?
         double s = (float) Math.sin(Math.toRadians(angle));
         double c = (float) Math.cos(Math.toRadians(angle));
         
@@ -136,6 +134,26 @@ public class Vector2
         this.x = (float) xNew + pivot.x;
         this.y = (float) yNew + pivot.y;
     }
+   
+    public void rotate(float angle)
+    {
+        Vector2 p = new Vector2(this.x, this.y);
+        double s = (float) Math.sin(Math.toRadians(angle));
+        double c = (float) Math.cos(Math.toRadians(angle));
+        
+        double xNew = p.x * c - p.y * s;
+        double yNew = p.x * s + p.y * c;
+        
+        this.x = (float) xNew;
+        this.y = (float) yNew;
+    }
+    
+    public void abs()
+    {
+        this.x = Math.abs(this.x);
+        this.y = Math.abs(this.y);
+    }
+    
     
     @Override
     public String toString()

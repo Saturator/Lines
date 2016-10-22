@@ -126,8 +126,6 @@ public class GameScene
         //make the algorithm so that the inner loops only checks items which
         //are within the max width/height for collision at all
         //otherwise jump out of the nested loop right away
-        
-        boolean[] hasCollided = new boolean[sceneObjects.size()];
         for(GameObject go : sceneObjects)
         {
             go.physicsBody.hasRotated = false;
@@ -139,12 +137,7 @@ public class GameScene
                 if(testForSpecificCollision(i, j) == true)
                 {
                     //we don't get j cos we get it in the outer loop later
-                    if(!hasCollided[i]) 
-                    {
-                        sceneObjects.get(i).isColliding();
-                        hasCollided[i] = true;
-                        hasCollided[j] = true;
-                    }
+                    sceneObjects.get(i).isColliding();
                 }
             }
         }  

@@ -58,6 +58,7 @@ public class Game implements MouseListener, KeyListener
                 endPt.subtract(startPt);
                 endPt.multiply(0.1f);
                 box.physicsBody.setVelocity(endPt);
+                box.physicsBody.rotate(45);
                 project.getScene(0).addGameObject(box);
             }
             else

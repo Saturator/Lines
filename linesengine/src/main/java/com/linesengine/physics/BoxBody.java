@@ -2,6 +2,7 @@ package com.linesengine.physics;
 
 import com.linesengine.math.Line;
 import com.linesengine.math.Vector2;
+import java.util.*;
 
 /**
  * BoxBody is a child object of PhysicsBody that simulates collision and movement for a box shaped are
@@ -115,14 +116,17 @@ public class BoxBody extends PhysicsBody
         
         if(other instanceof CircleBody && isCollidingWithCircle((CircleBody) other))
         {
-            resolveCircleCollision((CircleBody) other);
+            if(!this.hasCollided) resolveCircleCollision((CircleBody) other);
+            this.hasCollided = true;
             return true;
         }
         else if(other instanceof BoxBody && isCollidingWithBox((BoxBody) other))
         {
-            resolveBoxCollision((BoxBody) other);
+            if(!this.hasCollided) resolveBoxCollision((BoxBody) other);
+            this.hasCollided = true;
             return true;
         }
+        this.hasCollided = false;
         return false;
     }
     
@@ -134,9 +138,8 @@ public class BoxBody extends PhysicsBody
     {            
         Vector2 vel1 = this.velocity;
         vel1.multiply(0.6f);
-        
         other.velocity.add(vel1);
-        super.velocity.multiply(0.2f);
+        super.velocity.multiply(0.3f);
         super.hasCollided = true;
         physicsRotation(other);
     }
@@ -146,7 +149,7 @@ public class BoxBody extends PhysicsBody
      * @param other the CircleBody this BoxBody is colliding with
      */
     public void resolveCircleCollision(CircleBody other)
-    {            
+    {    
         Vector2 vel1 = this.velocity;
         vel1.multiply(0.75f);
         other.velocity.add(vel1);
@@ -184,6 +187,34 @@ public class BoxBody extends PhysicsBody
         float[] thisMinMax = getMinMax(this, direction);
         float[] otherMinMax = getMinMax(other, direction);
         return thisMinMax[1] > otherMinMax[0];
+    }
+    
+    /**
+     * Gets the box side that has been collided with and turns it into a collision normal.
+     * The collision normal is aligned with the collided side.
+     * This can then be added to the velocity of the other object that collided.
+     * @param other the other PhysicsBody that has collided with this BoxBody
+     * @return the specific collision normal of this box
+     */
+    public Vector2 getCollisionSideVector(PhysicsBody other)
+    {
+        Vector2 otherMid = other.middle();
+        Vector2[] pts = this.getPts();
+        SortedMap<Float, Vector2> diffs = new TreeMap<>();
+        for(int i = 0; i < pts.length-1; i++)
+        {
+            float diff = 
+            new Vector2(Math.abs(otherMid.x - pts[i].x), Math.abs(otherMid.y - pts[i].y)).length();
+            diffs.put(diff, pts[i]);
+        }
+        ArrayList<Vector2> sides = new ArrayList<>();
+        for(Vector2 p : diffs.values()) sides.add(p);
+        Vector2 hitSideMid = new Line(sides.get(0), sides.get(1)).getMidpoint();
+        Vector2 normal = 
+        new Vector2(hitSideMid.x - this.middle().x, hitSideMid.y - this.middle().y);
+        normal.normalize();
+        normal.multiply(other.speed() * 0.5f);
+        return normal;
     }
     
     /**

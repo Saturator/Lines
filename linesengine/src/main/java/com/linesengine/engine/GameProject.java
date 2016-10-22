@@ -7,7 +7,6 @@ import java.awt.event.*;
 /**
  * GameProject class represents a single, whole game.
  */
-
 public class GameProject implements Runnable
 {
     protected String name;
@@ -45,12 +44,12 @@ public class GameProject implements Runnable
             delta += now - lastTime;
             lastTime = now;
             
-            while(delta >= 12)
+            while(delta >= 11)
             {
                 this.getScene(0).tick();
                 this.window.repaint();
                 this.frames++;
-                delta -= 12;  
+                delta -= 11;  
             }
             
             if(System.currentTimeMillis() - currentTime > 1000)
