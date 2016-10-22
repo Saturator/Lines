@@ -44,12 +44,12 @@ public class GameProject implements Runnable
             delta += now - lastTime;
             lastTime = now;
             
-            while(delta >= 11)
+            while(delta >= 200)
             {
                 this.getScene(0).tick();
                 this.window.repaint();
                 this.frames++;
-                delta -= 11;  
+                delta -= 200;  
             }
             
             if(System.currentTimeMillis() - currentTime > 1000)

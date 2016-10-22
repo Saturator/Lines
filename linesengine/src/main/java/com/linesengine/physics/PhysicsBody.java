@@ -118,7 +118,8 @@ public abstract class PhysicsBody
     public abstract void move(Vector2 movement);
     
     /**
-     * Decreases the speed and rotation of the physics body by the amount of given friction.
+     * Decreases the speed and rotation of the PhysicsBody every time this is called.
+     * This method should be called every frame, or every time the physics simulation advances.
      */
     public void decreaseSpeed()
     {
@@ -139,7 +140,7 @@ public abstract class PhysicsBody
     }
     
     /**
-     * Adds downward or upward gravity to this physics body.
+     * Adds downward or upward gravity to this PhysicsBody.
      * @param other 
      */
     public void doGravity(PhysicsBody other)
