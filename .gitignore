@@ -1,1 +1,3 @@
 .DS_Store
+$ cat .gitattributes
+*.rb linguist-language=Java
