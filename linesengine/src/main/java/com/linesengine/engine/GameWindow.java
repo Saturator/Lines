@@ -1,8 +1,5 @@
 package com.linesengine.engine;
 
-import com.linesengine.game.*;
-import com.linesengine.math.*;
-import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
 
@@ -16,6 +13,8 @@ public class GameWindow extends JPanel
     public static final int WIDTH = 1000;
     public static final int HEIGHT = WIDTH / 12 * 9;
     private final GameProject project;
+    
+    JLabel fps;
     
     /**
      * Creates a new game window.

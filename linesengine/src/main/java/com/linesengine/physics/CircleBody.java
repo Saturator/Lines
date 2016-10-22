@@ -72,18 +72,21 @@ public class CircleBody extends PhysicsBody
     @Override
     public boolean isColliding(PhysicsBody other)
     {
-        if(this.speed() < 0.025f && other.speed() < 0.025f) return false;
+        if(this.speed() < 0.1f && other.speed() < 0.1f) return false;
         
         if(other instanceof CircleBody && isCollidingWithCircle((CircleBody) other))
         {
-            resolveCircleCollision((CircleBody) other);
+            if(!this.hasCollided) resolveCircleCollision((CircleBody) other);
+            this.hasCollided = true;
             return true;
         }
         else if(other instanceof BoxBody && isCollidingWithBox((BoxBody) other))
         {
-            resolveBoxCollision((BoxBody) other);
+            if(!this.hasCollided) resolveBoxCollision((BoxBody) other);
+            this.hasCollided = true;
             return true;
         }
+        this.hasCollided = false;
         return false;
     }
     
@@ -114,9 +117,12 @@ public class CircleBody extends PhysicsBody
     public void resolveBoxCollision(BoxBody other)
     {
         Vector2 vel1 = this.velocity;
-        vel1.multiply(0.5f);
+        vel1.multiply(0.75f);
         other.velocity.add(vel1);
-        super.velocity.add(other.getCollisionSideVector(this));
+        Vector2 collisionVector = other.getCollisionSideVector(this);
+        if(collisionVector == null) super.velocity.multiply(-0.3f);
+        else super.velocity.add(collisionVector);
+        super.velocity.multiply(0.7f);
         other.physicsRotation(this);
         super.hasCollided = true;
     }

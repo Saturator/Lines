@@ -112,7 +112,7 @@ public class BoxBody extends PhysicsBody
     @Override
     public boolean isColliding(PhysicsBody other)
     {   
-        if(this.speed() < 0.025f && other.speed() < 0.025f) return false;
+        if(this.speed() < 0.1f && other.speed() < 0.1f) return false;
         
         if(other instanceof CircleBody && isCollidingWithCircle((CircleBody) other))
         {
@@ -151,9 +151,9 @@ public class BoxBody extends PhysicsBody
     public void resolveCircleCollision(CircleBody other)
     {    
         Vector2 vel1 = this.velocity;
-        vel1.multiply(0.75f);
+        vel1.multiply(0.6f);
         other.velocity.add(vel1);
-        super.velocity.multiply(0.33f);
+        super.velocity.multiply(0.2f);
         super.hasCollided = true;
         physicsRotation(other);
     }
@@ -196,6 +196,7 @@ public class BoxBody extends PhysicsBody
      * @param other the other PhysicsBody that has collided with this BoxBody
      * @return the specific collision normal of this box
      */
+    //this needs refactoring
     public Vector2 getCollisionSideVector(PhysicsBody other)
     {
         Vector2 otherMid = other.middle();
@@ -208,12 +209,20 @@ public class BoxBody extends PhysicsBody
             diffs.put(diff, pts[i]);
         }
         ArrayList<Vector2> sides = new ArrayList<>();
+        ArrayList<Float> diffs2 = new ArrayList<>();
         for(Vector2 p : diffs.values()) sides.add(p);
+        for(Float f : diffs.keySet()) diffs2.add(f);
+        System.out.println(sides.get(0) + "   " + diffs2.get(1));
+        //if we the other hits the very edge of the box
+        if(diffs2.get(1) > 65f)
+        {
+            return null;
+        }
         Vector2 hitSideMid = new Line(sides.get(0), sides.get(1)).getMidpoint();
         Vector2 normal = 
         new Vector2(hitSideMid.x - this.middle().x, hitSideMid.y - this.middle().y);
         normal.normalize();
-        normal.multiply(other.speed() * 0.5f);
+        normal.multiply(other.speed() * 1.2f);
         return normal;
     }
     
@@ -225,7 +234,7 @@ public class BoxBody extends PhysicsBody
     {
         if(!super.hasRotated)
         {
-            if(other.speed() < 0.5f) other = this;
+            if(other.speed() < 0.25f) other = this;
             Vector2 diffMiddle = new Vector2(other.middle().x - this.middle().x, other.middle().y - this.middle().y);
             float rotAmt;
             if(Math.abs(other.velocity.x) >= Math.abs(other.velocity.y)) 
