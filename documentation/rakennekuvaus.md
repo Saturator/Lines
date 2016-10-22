@@ -21,15 +21,22 @@ GameObject luokka sisältää yhden pelissä olevan objektin, kuten vaikka pallo
 tai boksin. GameObjectiin ei ole pakko liittää RigidBodya, mutta jos haluat
 fysiikan vaikuttavan objektiin niin on se lisättävä.
 
-PhysicsBody on taas Math pakkauksessa. PhysicsBody on yläluokka kaikille objekteille
+PhysicsBody on taas Physics pakkauksessa. PhysicsBody on yläluokka kaikille objekteille
 johon moottorinsisäiset fysiikanlait voivat vaikuttaa. Tällä hetkellä toimiva
 fysiikkaobjekteja on kaksi, BoxBody ja CircleBody. BoxBody on neliön muotoinen
 objekti ja CircleBody on ympyrän muotoinen objekti.
-Math pakkaus sisältää kaikkeen fysiikkaan
+Physics pakkaus sisältää kaikkeen fysiikkaan
 liittyvän matikan. Pääasiassa tämä on vektorimatikkaa, eli lasketaan ja
 muutetaan pisteiden paikkoja kaksiulotteisessa avaruudessa. Ympyrän voi määritellä
 yhtenä pisteenä 2D avaruudessa jolla on tietty säde ja neliön voi määritellä
-neljänä erillisenä pisteenä 2D avaruudessa. Vector2 luokka vastaa näitä 2D
-pisteitä, joka meinaa, että kyseinen luokka sisältää arvot x ja y. X ruudun vasemmasta
+neljänä erillisenä pisteenä 2D avaruudessa. 
+
+Eroteltuna erilliseen pakkaukseen nimeltä Math ovat ne kaikista pienimmät 
+rakenteet joiden ympärillä fysiikka pyörii:
+Vector2 luokka joka mallintaa 2D pisteitä joilla voi olla suunta. Tämä meinaa, että kyseinen luokka sisältää arvot x ja y. X ruudun vasemmasta
 sivusta oikealle mitatut pikselit ja y on ruudun ylälaidasta alalaitaan mitatut
-pikselit.
+pikselit. Näiden vektorien suunta on siis aina oikealle ja alas ellei niitä
+muunneta kuvaamaan jotain muuta tilaa differenssin avulla. Line
+taasen on kahdesta vektoripisteestä koostuva viiva. Math paketti on erillinen
+kaikista muista paketeista siinä mielessä, että ne ovat vain työkaluja isompien
+rakenteiden ja luokkien luomiseen.
