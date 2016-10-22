@@ -117,12 +117,11 @@ public class CircleBody extends PhysicsBody
     public void resolveBoxCollision(BoxBody other)
     {
         Vector2 vel1 = this.velocity;
-        vel1.multiply(0.75f);
+        vel1.multiply(0.6f);
         other.velocity.add(vel1);
         Vector2 collisionVector = other.getCollisionSideVector(this);
         if(collisionVector == null) super.velocity.multiply(-0.3f);
         else super.velocity.add(collisionVector);
-        super.velocity.multiply(0.7f);
         other.physicsRotation(this);
         super.hasCollided = true;
     }

@@ -153,7 +153,7 @@ public class BoxBody extends PhysicsBody
         Vector2 vel1 = this.velocity;
         vel1.multiply(0.6f);
         other.velocity.add(vel1);
-        super.velocity.multiply(0.2f);
+        super.velocity.multiply(0.3f);
         super.hasCollided = true;
         physicsRotation(other);
     }
